@@ -1,0 +1,24 @@
+[[redirects]]
+  from = "/music"
+  to = "/pages/music.html"
+  status = 200
+
+[[redirects]]
+  from = "/bookings"
+  to = "/pages/bookings.html"
+  status = 200
+
+[[redirects]]
+  from = "/media"
+  to = "/pages/media.html"
+  status = 200
+
+[[redirects]]
+  from = "/radio"
+  to = "/pages/radio.html"
+  status = 200
+
+[[redirects]]
+  from = "/about"
+  to = "/pages/about.html"
+  status = 200
