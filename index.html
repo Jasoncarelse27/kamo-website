@@ -41,12 +41,22 @@
     <main id="main-content" class="app-main">
       <div class="app-content">
 
-        <!-- Dashboard Hero -->
+        <!-- Ecosystem Branding — static label above hero -->
+        <div class="dashboard-hero__ecosystem-label">DB Studio Artist Ecosystem</div>
+
+        <!-- Dashboard Hero — JS renders avatar, name, tagline, actions, stats inside here -->
         <div id="dashboard-hero" class="dashboard-hero">
           <div class="dashboard-hero__avatar" style="background: var(--dark-mid);"></div>
           <div class="dashboard-hero__info">
             <p style="color: var(--muted); font-size: 14px;">Loading dashboard...</p>
           </div>
+        </div>
+
+        <!-- Static Featured Release — presentational only. Placed outside JS-controlled hero. -->
+        <div class="dashboard-hero__featured">
+          <span class="dashboard-hero__featured-label">Featured Release</span>
+          <span class="dashboard-hero__featured-title">Son of Moses</span>
+          <a href="/music" class="dashboard-hero__featured-link">Listen Now →</a>
         </div>
 
         <!-- Metrics Row -->

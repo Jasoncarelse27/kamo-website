@@ -3,108 +3,245 @@
    Kamo G · Version 1
    ============================================================ */
 
-/* Dashboard Hero / Profile Header */
+/* ============================================================
+   DASHBOARD HERO — IDENTITY LAYER
+   Sprint 2A: Visual hierarchy for brand, ecosystem, featured release
+   ============================================================ */
+
+/* Ecosystem branding label — sits above the hero */
+.dashboard-hero__ecosystem-label {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-sm);
+  padding-left: 2px;
+}
+
 .dashboard-hero {
-  background: var(--dark);
+  background: linear-gradient(135deg, var(--black) 0%, var(--dark) 40%, rgba(201, 151, 42, 0.06) 100%);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: var(--space-xl);
+  padding: var(--space-xl) var(--space-xl) 0;
   margin-bottom: var(--space-lg);
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
   gap: var(--space-xl);
   position: relative;
   overflow: hidden;
 }
 
+/* Decorative gold wash — pseudo-elements for visual effect only */
 .dashboard-hero::before {
   content: '';
   position: absolute;
   top: 0;
   right: 0;
-  width: 40%;
+  width: 50%;
   height: 100%;
-  background: linear-gradient(135deg, transparent 0%, rgba(201, 151, 42, 0.05) 100%);
+  background: radial-gradient(ellipse at top right, rgba(201, 151, 42, 0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 
+/* Avatar — visual anchor with gold ring */
 .dashboard-hero__avatar {
-  width: 96px;
-  height: 96px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   border: 3px solid var(--gold);
   object-fit: cover;
   flex-shrink: 0;
   background: var(--dark-mid);
+  box-shadow: 0 0 0 4px rgba(201, 151, 42, 0.12);
 }
 
+/* Info block — name, tagline, actions */
 .dashboard-hero__info {
   flex: 1;
+  min-width: 240px;
 }
 
+/* KAMO G — dominant brand heading with gold gradient */
 .dashboard-hero__name {
   font-family: var(--font-heading);
-  font-size: 28px;
+  font-size: 36px;
   font-weight: 900;
-  color: var(--white);
+  letter-spacing: -0.5px;
   margin-bottom: var(--space-xs);
+  background: linear-gradient(135deg, #c9972a 0%, #e0b84a 50%, #c9972a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
+/* Tagline — ecosystem context + location */
 .dashboard-hero__tagline {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--muted);
   margin-bottom: var(--space-md);
+  letter-spacing: 0.3px;
 }
 
+.dashboard-hero__tagline-ecosystem {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2px;
+}
+
+/* Action buttons */
 .dashboard-hero__actions {
   display: flex;
   gap: var(--space-sm);
   flex-wrap: wrap;
 }
 
+/* Stats — glass-morphism metric cards */
 .dashboard-hero__stats {
   display: flex;
-  gap: var(--space-xl);
+  gap: var(--space-md);
   flex-shrink: 0;
+  align-self: center;
 }
 
 .dashboard-hero__stat {
   text-align: center;
+  background: rgba(17, 17, 17, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(201, 151, 42, 0.15);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  min-width: 90px;
 }
 
 .dashboard-hero__stat-value {
   font-family: var(--font-heading);
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
   color: var(--gold);
+  line-height: 1.2;
 }
 
 .dashboard-hero__stat-label {
-  font-size: 10px;
+  font-size: 9px;
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-top: 2px;
 }
 
-@media (max-width: 768px) {
+/* Featured Release Bar — full-width callout below hero */
+.dashboard-hero__featured {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: calc(-1 * var(--space-lg) + 1px);
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
+  background: rgba(201, 151, 42, 0.04);
+  border: 1px solid rgba(201, 151, 42, 0.12);
+  border-top: none;
+  border-left: 3px solid var(--gold);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+.dashboard-hero__featured-label {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.dashboard-hero__featured-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--white);
+  flex: 1;
+}
+
+.dashboard-hero__featured-link {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gold);
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.dashboard-hero__featured-link:hover {
+  color: var(--gold-light);
+  transform: translateX(2px);
+}
+
+/* Responsive — tablet and mobile */
+@media (max-width: 992px) {
   .dashboard-hero {
     flex-direction: column;
-    text-align: center;
-    padding: var(--space-lg);
+    align-items: stretch;
+    padding: var(--space-lg) var(--space-lg) 0;
   }
 
-  .dashboard-hero__stats {
-    width: 100%;
-    justify-content: center;
+  .dashboard-hero__info {
+    text-align: center;
+  }
+
+  .dashboard-hero__avatar {
+    align-self: center;
   }
 
   .dashboard-hero__actions {
     justify-content: center;
   }
 
-  .dashboard-hero::before {
-    display: none;
+  .dashboard-hero__stats {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .dashboard-hero__featured {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .dashboard-hero {
+    padding: var(--space-md) var(--space-md) 0;
+  }
+
+  .dashboard-hero__avatar {
+    width: 96px;
+    height: 96px;
+  }
+
+  .dashboard-hero__name {
+    font-size: 28px;
+  }
+
+  .dashboard-hero__stat {
+    min-width: 80px;
+    padding: var(--space-xs) var(--space-sm);
+  }
+
+  .dashboard-hero__stat-value {
+    font-size: 18px;
+  }
+
+  .dashboard-hero__featured {
+    padding: var(--space-sm) var(--space-md);
+    flex-direction: column;
+    gap: var(--space-xs);
   }
 }
 
