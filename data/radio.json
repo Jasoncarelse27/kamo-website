@@ -1,0 +1,19 @@
+{
+  "isActive": true,
+  "title": "Kamo G — Radio Pack 2026",
+  "description": "Official press kit, biography, high-resolution photos, audio downloads, and media assets for radio stations, journalists, and booking inquiries.",
+  "epkDownloadUrl": "https://drive.google.com/drive/folders/kamo-g-epk",
+  "bioPdfUrl": "https://drive.google.com/file/d/kamo-g-bio",
+  "audioDownloadUrl": "https://drive.google.com/drive/folders/kamo-g-audio",
+  "contents": [
+    "Artist Biography (PDF)",
+    "High Resolution Photos (ZIP — 12 images)",
+    "Radio Edit Tracks (WAV — 4 tracks)",
+    "Clean Edit Tracks (WAV — 4 tracks)",
+    "Interview Questions (PDF)",
+    "Live Performance Rider (PDF)",
+    "Technical Spec Sheet (PDF)",
+    "Press Release — Latest Single (PDF)"
+  ],
+  "lastUpdated": "2026-03-01"
+}

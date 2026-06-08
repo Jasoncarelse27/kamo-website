@@ -1,0 +1,24 @@
+{
+  "name": "Kamo G",
+  "tagline": "South African music artist",
+  "bio": "Born in Pretoria. Bred in Kempton Park. A voice for a generation that refuses to be ignored. Kamo G blends raw storytelling with genre-defying production, carving out a space that is entirely his own.",
+  "email": "kgnon6@gmail.com",
+  "location": "Johannesburg, South Africa",
+  "genre": "Hip Hop / Afro",
+  "avatar": "assets/images/brand/avatar.jpg",
+  "coverImage": "assets/images/brand/cover.jpg",
+  "socials": {
+    "instagram": "https://instagram.com/kamog",
+    "twitter": "https://twitter.com/kamog",
+    "youtube": "https://youtube.com/@kamog",
+    "spotify": "https://open.spotify.com/artist/kamog",
+    "appleMusic": "https://music.apple.com/artist/kamog",
+    "soundcloud": "https://soundcloud.com/kamog"
+  },
+  "stats": {
+    "monthlyListeners": 12450,
+    "totalStreams": 892000,
+    "followers": 8450,
+    "releases": 12
+  }
+}

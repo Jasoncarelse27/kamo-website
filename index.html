@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kamo G — South African music artist. Official website with music, bookings, media, and press kit.">
+  <meta name="theme-color" content="#111111">
+
+  <title>Kamo G — Artist Dashboard</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;900&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- Chart.js for sparkline charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+
+  <!-- Scripts -->
+  <script src="js/utils.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navbar -->
+  <div id="navbar">Loading navigation...</div>
+
+  <!-- App Layout -->
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <div id="sidebar">Loading sidebar...</div>
+
+    <!-- Main Content -->
+    <main id="main-content" class="app-main">
+      <div class="app-content">
+
+        <!-- Dashboard Hero -->
+        <div id="dashboard-hero" class="dashboard-hero">
+          <div class="dashboard-hero__avatar" style="background: var(--dark-mid);"></div>
+          <div class="dashboard-hero__info">
+            <p style="color: var(--muted); font-size: 14px;">Loading dashboard...</p>
+          </div>
+        </div>
+
+        <!-- Metrics Row -->
+        <div id="metrics-row" class="metrics-row">
+          <div class="dashboard-card">
+            <p style="color: var(--muted);">Loading metrics...</p>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="dashboard-section">
+          <div class="dashboard-section__header">
+            <h2 class="dashboard-section__title">Quick Actions</h2>
+          </div>
+          <div id="quick-actions" class="quick-actions">
+            <div class="quick-action">
+              <p style="color: var(--muted); font-size: 13px;">Loading...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard Grid: Activity + Releases -->
+        <div class="dashboard-grid">
+          <!-- Activity Feed -->
+          <div id="activity-feed" class="activity-feed">
+            <div class="activity-feed__header">
+              <h3 class="activity-feed__title">Recent Activity</h3>
+            </div>
+            <p style="color: var(--muted); font-size: 13px;">Loading activity...</p>
+          </div>
+
+          <!-- Recent Releases -->
+          <div class="dashboard-section">
+            <div class="dashboard-section__header">
+              <h2 class="dashboard-section__title">Recent Releases</h2>
+              <a href="/music" class="dashboard-section__link">View All</a>
+            </div>
+            <div id="recent-releases" class="music-grid" style="grid-template-columns: 1fr;">
+              <p style="color: var(--muted); font-size: 13px;">Loading releases...</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <div id="footer">Loading footer...</div>
+
+  <!-- Component Loader -->
+  <script>
+    // Load shared components
+    async function loadComponent(id, url) {
+      try {
+        const response = await fetch(url);
+        if (response.ok) {
+          document.getElementById(id).innerHTML = await response.text();
+        }
+      } catch (e) {
+        console.warn('Could not load component:', url);
+      }
+    }
+
+    loadComponent('navbar', 'components/navbar.html');
+    loadComponent('sidebar', 'components/sidebar.html');
+    loadComponent('footer', 'components/footer.html');
+  </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kamo G — Bookings. Inquire about booking Kamo G for your event, festival, or show.">
+  <meta name="theme-color" content="#111111">
+
+  <title>Kamo G — Bookings</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+
+  <script src="../js/utils.js" defer></script>
+  <script src="../js/main.js" defer></script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="navbar">Loading navigation...</div>
+
+  <div class="app-layout">
+    <div id="sidebar">Loading sidebar...</div>
+
+    <main id="main-content" class="app-main">
+      <div class="app-content">
+
+        <!-- Page Hero -->
+        <div class="page-hero">
+          <div class="page-hero__tag">Bookings</div>
+          <h1 class="page-hero__title">Book Kamo G</h1>
+          <p class="page-hero__subtitle">Inquire about booking for festivals, events, private shows, and collaborations.</p>
+        </div>
+
+        <!-- Bookings Layout -->
+        <div class="bookings-layout">
+          <!-- Booking Form -->
+          <div class="bookings-form">
+            <div class="bookings-form__placeholder">
+              <div class="bookings-form__placeholder-icon">📋</div>
+              <p class="bookings-form__placeholder-text">
+                Booking form will be integrated here via Typeform or Calendly in a future sprint.
+              </p>
+              <p class="mt-md" style="font-size: 13px; color: var(--muted);">
+                For now, email inquiries to <a href="mailto:kgnon6@gmail.com">kgnon6@gmail.com</a>
+              </p>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <div class="bookings-sidebar">
+            <div class="bookings-sidebar__card">
+              <h3 class="bookings-sidebar__card-title">Upcoming Shows</h3>
+              <div class="bookings-sidebar__list">
+                <div class="bookings-sidebar__item">
+                  <span class="bookings-sidebar__item-icon">📅</span>
+                  Aug 15 — Zone 6, Johannesburg
+                </div>
+                <div class="bookings-sidebar__item">
+                  <span class="bookings-sidebar__item-icon">📅</span>
+                  Sep 22 — Arts Festival, Makhanda
+                </div>
+                <div class="bookings-sidebar__item">
+                  <span class="bookings-sidebar__item-icon">📅</span>
+                  Oct 10 — Cape Town Showcase
+                </div>
+              </div>
+            </div>
+
+            <div class="bookings-sidebar__card">
+              <h3 class="bookings-sidebar__card-title">Contact</h3>
+              <div class="bookings-sidebar__list">
+                <div class="bookings-sidebar__item">
+                  <span class="bookings-sidebar__item-icon">✉️</span>
+                  kgnon6@gmail.com
+                </div>
+                <div class="bookings-sidebar__item">
+                  <span class="bookings-sidebar__item-icon">📻</span>
+                  <a href="/radio">Download Press Kit</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <div id="footer">Loading footer...</div>
+
+  <script>
+    async function loadComponent(id, url) {
+      try {
+        const response = await fetch(url);
+        if (response.ok) document.getElementById(id).innerHTML = await response.text();
+      } catch (e) { console.warn('Could not load component:', url); }
+    }
+    loadComponent('navbar', '../components/navbar.html');
+    loadComponent('sidebar', '../components/sidebar.html');
+    loadComponent('footer', '../components/footer.html');
+  </script>
+</body>
+</html>

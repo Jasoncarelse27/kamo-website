@@ -1,0 +1,50 @@
+[
+  {
+    "id": "gallery-001",
+    "src": "assets/images/gallery/performance-1.jpg",
+    "alt": "Kamo G performing live on stage",
+    "caption": "Live at Zone 6 Venue, Johannesburg — 2026",
+    "category": "performance",
+    "type": "image"
+  },
+  {
+    "id": "gallery-002",
+    "src": "assets/images/gallery/portrait-1.jpg",
+    "alt": "Kamo G portrait — studio session",
+    "caption": "Official press photo — 2026",
+    "category": "portrait",
+    "type": "image"
+  },
+  {
+    "id": "gallery-003",
+    "src": "assets/images/gallery/studio-1.jpg",
+    "alt": "Kamo G in the recording studio",
+    "caption": "Studio session — recording new material",
+    "category": "behind-the-scenes",
+    "type": "image"
+  },
+  {
+    "id": "gallery-004",
+    "src": "assets/images/gallery/performance-2.jpg",
+    "alt": "Kamo G at Arts Festival",
+    "caption": "Arts Festival Main Stage performance",
+    "category": "performance",
+    "type": "image"
+  },
+  {
+    "id": "gallery-005",
+    "src": "assets/images/gallery/portrait-2.jpg",
+    "alt": "Kamo G — black and white portrait",
+    "caption": "Editorial portrait — 2026",
+    "category": "portrait",
+    "type": "image"
+  },
+  {
+    "id": "gallery-006",
+    "src": "assets/images/gallery/behind-scenes-1.jpg",
+    "alt": "Behind the scenes at music video shoot",
+    "caption": "Behind the scenes — 'Son of Moses' music video",
+    "category": "behind-the-scenes",
+    "type": "image"
+  }
+]

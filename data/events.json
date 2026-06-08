@@ -1,0 +1,42 @@
+[
+  {
+    "id": "evt-001",
+    "title": "Zone 6 Live",
+    "date": "2026-08-15",
+    "venue": "Zone 6 Venue",
+    "city": "Johannesburg",
+    "ticketUrl": "https://tickets.example.com/zone6-live",
+    "isActive": true,
+    "isPast": false
+  },
+  {
+    "id": "evt-002",
+    "title": "Arts Festival Main Stage",
+    "date": "2026-09-22",
+    "venue": "National Arts Festival",
+    "city": "Makhanda",
+    "ticketUrl": "https://tickets.example.com/arts-fest",
+    "isActive": true,
+    "isPast": false
+  },
+  {
+    "id": "evt-003",
+    "title": "Cape Town Showcase",
+    "date": "2026-10-10",
+    "venue": "The Grand Arena",
+    "city": "Cape Town",
+    "ticketUrl": "",
+    "isActive": false,
+    "isPast": false
+  },
+  {
+    "id": "evt-004",
+    "title": "Durban Music Week",
+    "date": "2026-03-01",
+    "venue": "Durban ICC",
+    "city": "Durban",
+    "ticketUrl": "",
+    "isActive": false,
+    "isPast": true
+  }
+]

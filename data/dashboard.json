@@ -1,0 +1,92 @@
+{
+  "metrics": [
+    {
+      "id": "metric-1",
+      "label": "Monthly Listeners",
+      "value": 12450,
+      "prefix": "",
+      "suffix": "",
+      "change": 12.5,
+      "changeDirection": "up",
+      "icon": "headphones",
+      "chartData": [3200, 4800, 6200, 7800, 9100, 10400, 12450]
+    },
+    {
+      "id": "metric-2",
+      "label": "Total Streams",
+      "value": 892000,
+      "prefix": "",
+      "suffix": "",
+      "change": 8.3,
+      "changeDirection": "up",
+      "icon": "music",
+      "chartData": [450000, 520000, 610000, 680000, 740000, 810000, 892000]
+    },
+    {
+      "id": "metric-3",
+      "label": "Followers",
+      "value": 8450,
+      "prefix": "",
+      "suffix": "",
+      "change": 15.2,
+      "changeDirection": "up",
+      "icon": "users",
+      "chartData": [3200, 4100, 5200, 6100, 7000, 7800, 8450]
+    },
+    {
+      "id": "metric-4",
+      "label": "Engagement Rate",
+      "value": 4.8,
+      "prefix": "",
+      "suffix": "%",
+      "change": 2.1,
+      "changeDirection": "up",
+      "icon": "activity",
+      "chartData": [2.1, 2.8, 3.2, 3.6, 4.0, 4.4, 4.8]
+    }
+  ],
+  "quickActions": [
+    {
+      "label": "Latest Release",
+      "value": "Son of Moses",
+      "link": "/music"
+    },
+    {
+      "label": "Upcoming Show",
+      "value": "Johannesburg — Aug 15",
+      "link": "/bookings"
+    },
+    {
+      "label": "New EPK",
+      "value": "Radio Pack v3",
+      "link": "/radio"
+    }
+  ],
+  "recentActivity": [
+    {
+      "type": "release",
+      "text": "New single 'Son of Moses' released — streaming everywhere",
+      "date": "2026-03-15"
+    },
+    {
+      "type": "stream",
+      "text": "Surpassed 800,000 total streams across all platforms",
+      "date": "2026-03-10"
+    },
+    {
+      "type": "event",
+      "title": "Upcoming show at Zone 6 Venue, Johannesburg",
+      "date": "2026-08-15"
+    },
+    {
+      "type": "release",
+      "text": "Radio Pack v3 updated with new press photos and bio",
+      "date": "2026-03-01"
+    },
+    {
+      "type": "stream",
+      "text": "'Midnight in Joburg' added to 15 new editorial playlists",
+      "date": "2026-02-20"
+    }
+  ]
+}
