@@ -441,3 +441,27 @@
 .dashboard-section__link:hover {
   color: var(--gold-light);
 }
+
+/* Dashboard Release Grid — artwork sizing for recent releases */
+.dashboard-releases {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+.dashboard-releases .track-card {
+  max-width: 320px;
+  width: 100%;
+}
+
+@media (max-width: 992px) {
+  .dashboard-releases {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .dashboard-releases {
+    grid-template-columns: 1fr;
+  }
+}
