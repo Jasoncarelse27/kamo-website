@@ -118,5 +118,20 @@
     "isFeatured": false,
     "streamCount": 312000,
     "description": "The debut album. 12 tracks exploring love, loss, identity, and the journey home."
+  },
+  {
+    "id": "rel-009",
+    "title": "Oxygen Tank",
+    "coverArt": "assets/images/releases/oxygen-tank.jpg",
+    "type": "album",
+    "year": "2023",
+    "releaseDate": "2023-12-01",
+    "spotifyUrl": "https://open.spotify.com/album/4x34u2u5h0eARAbcn93FRd",
+    "appleMusicUrl": "https://music.apple.com/za/album/oxygen-tank/1718976332",
+    "youtubeUrl": "https://youtube.com/playlist?list=OLAK5uy_nA3jn-XLfWgPFpDvaXjYau1PgmxbIWXX8",
+    "soundcloudUrl": "",
+    "isFeatured": false,
+    "streamCount": 0,
+    "description": "The highly anticipated debut album from Kamo. G — a genre-blending collection that defines his sound."
   }
 ]
