@@ -71,8 +71,8 @@ function renderDashboardHero(artist) {
       <h1 class="dashboard-hero__name">${artist.name}</h1>
       <p class="dashboard-hero__tagline">${artist.tagline} · ${artist.location}</p>
       <div class="dashboard-hero__actions">
-        <a href="/music" class="btn btn--gold">View Music</a>
-        <a href="/bookings" class="btn btn--outline">Book Now</a>
+        <a href="/music" class="btn btn--gold">Hear The Story</a>
+        <a href="/bookings" class="btn btn--outline">Book Kamo G</a>
       </div>
     </div>
     <div class="dashboard-hero__stats">
@@ -319,18 +319,28 @@ function renderGallery(items) {
  */
 async function loadRadioPage() {
   const radio = await fetchData('data/radio.json');
+  const artist = await fetchData('data/artist.json');
   if (!radio) return;
 
-  renderRadioPack(radio);
+  renderRadioPack(radio, artist);
 }
 
-function renderRadioPack(radio) {
+function renderRadioPack(radio, artist) {
   const container = document.getElementById('radio-main');
   if (!container) return;
+
+  const narrative = artist && artist.narrative ? artist.narrative.radioNarrative : '';
 
   container.innerHTML = `
     <h1 class="radio-main__title">${radio.title}</h1>
     <p class="radio-main__description">${radio.description}</p>
+
+    ${narrative ? `
+    <div class="radio-contents" style="margin-top: var(--space-lg);">
+      <h3 class="radio-contents__title">About Kamo G</h3>
+      <p style="font-size: 14px; color: var(--muted-light); line-height: 1.7; margin-bottom: var(--space-md);">${narrative.replace(/\n/g, '<br>')}</p>
+    </div>
+    ` : ''}
 
     <div class="radio-contents">
       <h3 class="radio-contents__title">Pack Contents</h3>
@@ -378,8 +388,8 @@ function renderAboutPage(artist) {
     content.innerHTML = `
       <div class="about-content__text">
         <p>${artist.bio}</p>
-        <p>Based in ${artist.location}, ${artist.name} has been making waves in the ${artist.genre} scene with a distinctive sound that blends raw storytelling with genre-defying production.</p>
-        <p>With over ${formatNumber(artist.stats.totalStreams)} streams worldwide and a growing fanbase, ${artist.name} is establishing themselves as one of the most exciting artists to emerge from South Africa's new wave.</p>
+        <p>From Pretoria to Johannesburg, Kamo G is carving out a space that's entirely his own. His sound — a fusion of hip-hop, Afrobeat, and raw storytelling — reflects the journey of a young man who decided at 16 that music was the only path.</p>
+        <p>With over ${formatNumber(artist.stats.totalStreams)} streams worldwide, the story of "Son of Moses" is reaching listeners across the globe. But this is just the beginning. The album "Oxygen Tank" is coming.</p>
       </div>
       <div class="about-content__image">
         <img src="${artist.avatar}" alt="${artist.name}"

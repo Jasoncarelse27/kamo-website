@@ -1,7 +1,7 @@
 {
   "name": "Kamo G",
-  "tagline": "South African music artist",
-  "bio": "Kamo. G, also known as Kermmy, is a rising South African artist who was born in Pretoria but bred in Kempton Park. Kamo. G has been drawn to music since he was 9 years old, but it wasn't until he turned 16 that he decided to pursue a career as a recording artist.\n\nKamo. G's love for music began at an early age, as he grew up in a musical family where he was exposed to various genres of music. His passion for music led him to explore different sounds and styles, which he incorporates into his music today.\n\nAlthough a natural talent, Kamo. G has always been his worst critic, delaying the release of his first musical offering. Nonetheless, more songs are on the way, culminating in the highly anticipated album \"Oxygen Tank.\"\n\nKamo. G is here to bring a musical sound that relates to all circles of life. He aims to create music that resonates with people from all walks of life, regardless of their age, race, or gender. With his unique sound, Kamo. G hopes to inspire and uplift his listeners.\n\nKamo. G stands out from other artists with his genre-blending music, heartfelt lyrics, and smooth delivery.\n\nKamo. G's musical journey is just beginning, and he is determined to make a mark in the South African music industry. With his talent, dedication, and passion for music, there is no doubt that Kamo. G will go far in his career.",
+  "tagline": "Pretoria-born artist • The Son of Moses",
+  "bio": "Born in Pretoria. Raised on the raw edges of Kempton Park. Kamo G has been chasing the sound since he was 9 years old — a kid from the suburbs of Pretoria who found his voice in the space between hip-hop, Afro, and the unfiltered truth of South African life.\n\nAt 16, he made the decision: music wasn't just a dream — it was the only path. Growing up in a musical family, the genres blurred together. Gospel. Hip-hop. Afrobeat. Kwaito. It all became part of the DNA that powers every track he makes.\n\n\"Son of Moses\" isn't just a song title. It's a statement. A declaration of identity. A Pretoria-born artist carrying a story that refuses to be ignored.\n\nFrom the streets of Tshwane to the stages of Johannesburg, Kamo G is here to make music that speaks to every circle of life — the struggle, the grind, the hope, and the celebration. Every track is a page from his story. The album \"Oxygen Tank\" is the next chapter.\n\nKamo G is not here to fit in. He's here to stand out — blending genres, breaking rules, and building something real.",
   "email": "misfitrecords2@gmail.com",
   "location": "Johannesburg, South Africa",
   "genre": "Hip Hop / Afro",
@@ -18,5 +18,19 @@
     "totalStreams": 892000,
     "followers": 8450,
     "releases": 12
+  },
+  "narrative": {
+    "whySonOfMoses": "The name 'Son of Moses' is rooted in family. It's a tribute to his father, Moses — the man whose name carries the weight of legacy, faith, and identity. Born in Pretoria and raised in Kempton Park, Kamo G grew up in a home where music was everywhere. Gospel. Hip-hop. Afrobeat. Kwaito. It all blended together, and by age 9, he was already chasing the sound.\n\nAt 16, he made the choice that would define his life: music wasn't a hobby — it was the path. Every track he creates is a page from his story. 'Son of Moses' is more than a song title. It's a declaration of where he comes from, who raised him, and what he's here to say.\n\nThe album 'Oxygen Tank' (released December 2023) is the next chapter — a project that speaks to every circle of life: the struggle, the grind, the hope, and the celebration.",
+    "radioNarrative": "Kamo G (born Kamogelo Nonyane) is a Pretoria-born South African artist raised in Kempton Park. His sound blends hip-hop, Afrobeat, and raw storytelling — shaped by a childhood in a musical family where gospel, hip-hop, and kwaito all played a part.\n\nHe discovered music at age 9 and committed to the path at 16. His release 'Son of Moses' — named after his father Moses — is both a personal tribute and an identity statement. The album 'Oxygen Tank' (December 2023) represents the next evolution of his story.\n\nKamo G's mission is to create music that speaks to all walks of life — rooted in Pretoria, built in Johannesburg, and reaching for the world.",
+    "timeline": [
+      { "year": "Born in Pretoria", "desc": "Kamo G was born in Pretoria, a city that shapes his identity and sound." },
+      { "year": "Raised in Kempton Park", "desc": "Grew up on the raw edges of Kempton Park, where the suburbs met the streets." },
+      { "year": "Age 9 — Discovered Music", "desc": "Drawn to music from an early age. Growing up in a musical family, the genres blurred together — gospel, hip-hop, Afrobeat, kwaito." },
+      { "year": "Age 16 — The Decision", "desc": "Chose music as a career. Not just a dream — the only path forward." },
+      { "year": "Began Releasing Music", "desc": "Started building a catalogue of singles and EPs, blending genres and breaking rules." },
+      { "year": "Son of Moses", "desc": "A tribute to his father Moses. A declaration of identity. The song that changed everything." },
+      { "year": "Oxygen Tank (2023)", "desc": "The album released December 2023. A project that speaks to every circle of life — the struggle, the grind, the hope, and the celebration." },
+      { "year": "Next Chapter", "desc": "The story continues. New music. New stages. Same mission." }
+    ]
   }
 }
