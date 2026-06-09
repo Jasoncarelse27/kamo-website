@@ -88,7 +88,14 @@
     async function loadComponent(id, url) {
       try {
         const response = await fetch(url);
-        if (response.ok) document.getElementById(id).innerHTML = await response.text();
+        if (response.ok) {
+          document.getElementById(id).innerHTML = await response.text();
+          // Re-initialize navigation after navbar is injected into DOM
+          if (id === 'navbar' && window.DBStudio && window.DBStudio.utils) {
+            window.DBStudio.utils.initMobileNav();
+            window.DBStudio.utils.setActiveNavLink();
+          }
+        }
       } catch (e) { console.warn('Could not load component:', url); }
     }
     loadComponent('navbar', '../components/navbar.html');
