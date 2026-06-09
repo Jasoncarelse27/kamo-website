@@ -414,15 +414,15 @@ function renderAboutPage(artist) {
  * Helper: Get icon HTML (simple unicode/emoji icons)
  */
 function getIconHTML(icon) {
-  const icons = {
-    'headphones': '🎧',
-    'music': '🎵',
-    'users': '👥',
-    'activity': '📈',
-    'calendar': '📅',
-    'download': '📥',
-    'play': '▶️',
-    'star': '⭐'
+  var icons = {
+    'headphones': 'headphones',
+    'music': 'music',
+    'users': 'users',
+    'activity': 'activity',
+    'calendar': 'calendar',
+    'download': 'download',
+    'play': 'play',
+    'star': 'star'
   };
-  return icons[icon] || '●';
+  return iconSVG(icons[icon] || 'music', 18);
 }
