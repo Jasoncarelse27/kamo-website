@@ -161,6 +161,10 @@ function initMobileNav() {
 
   if (!toggle || !links) return;
 
+  // Guard against duplicate event listeners
+  if (toggle._kamoNavReady) return;
+  toggle._kamoNavReady = true;
+
   toggle.addEventListener('click', function() {
     links.classList.toggle('navbar__links--open');
     toggle.setAttribute('aria-expanded', links.classList.contains('navbar__links--open'));
