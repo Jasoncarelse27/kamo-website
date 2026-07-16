@@ -1,7 +1,7 @@
 # Kamo Website Recovery Manifest
 
-Recovery date: 2026-07-16  
-Clean base: `d1c20d826c62b6671c171e590386754f94ca5f2c`  
+Recovery date: 2026-07-16
+Clean base: `d1c20d826c62b6671c171e590386754f94ca5f2c`
 Recovery branch: `recovery/kamo-handover-20260716`
 
 ## Comparison result
