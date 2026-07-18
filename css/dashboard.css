@@ -24,7 +24,7 @@
   background: linear-gradient(135deg, var(--black) 0%, var(--dark) 40%, rgba(201, 151, 42, 0.06) 100%);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: var(--space-xl) var(--space-xl) 0;
+  padding: var(--space-xl);
   margin-bottom: var(--space-lg);
   display: flex;
   flex-wrap: wrap;
@@ -268,10 +268,20 @@
 /* Quick Actions */
 .quick-actions {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: var(--space-md);
   margin-bottom: var(--space-lg);
 }
+
+.story-card {
+  background: var(--dark);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.story-card h2 { margin-bottom: var(--space-sm); }
 
 .quick-action {
   background: var(--dark);

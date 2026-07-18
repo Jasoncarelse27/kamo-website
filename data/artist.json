@@ -1,36 +1,38 @@
 {
-  "name": "Kamo G",
-  "tagline": "Pretoria-born artist • The Son of Moses",
-  "bio": "Born in Pretoria. Raised on the raw edges of Kempton Park. Kamo G has been chasing the sound since he was 9 years old — a kid from the suburbs of Pretoria who found his voice in the space between hip-hop, Afro, and the unfiltered truth of South African life.\n\nAt 16, he made the decision: music wasn't just a dream — it was the only path. Growing up in a musical family, the genres blurred together. Gospel. Hip-hop. Afrobeat. Kwaito. It all became part of the DNA that powers every track he makes.\n\n\"Son of Moses\" isn't just a song title. It's a statement. A declaration of identity. A Pretoria-born artist carrying a story that refuses to be ignored.\n\nFrom the streets of Tshwane to the stages of Johannesburg, Kamo G is here to make music that speaks to every circle of life — the struggle, the grind, the hope, and the celebration. Every track is a page from his story. The album \"Oxygen Tank\" is the next chapter.\n\nKamo G is not here to fit in. He's here to stand out — blending genres, breaking rules, and building something real.",
-  "email": "misfitrecords2@gmail.com",
-  "location": "Johannesburg, South Africa",
-  "genre": "Hip Hop / Afro",
-  "avatar": "assets/images/brand/avatar.jpg",
-  "coverImage": "assets/images/brand/cover.jpg",
+  "name": "Kamo. G",
+  "searchName": "Kamo G",
+  "tagline": "South African artist • Son of Moses",
+  "shortBio": "Kamo. G is a Pretoria-born South African artist whose work draws on hip-hop, Afro-influenced sounds and personal storytelling.",
+  "bio": [
+    "Born in Pretoria and raised in Kempton Park, Kamo. G grew up in a musical family where gospel, hip-hop, Afrobeat and kwaito were part of everyday life.",
+    "He discovered music at age nine and committed to pursuing it at sixteen. His work is grounded in identity, family and the realities of South African life.",
+    "Son of Moses is an artistic identity and campaign concept rooted in family legacy. It honours his father, Moses, and frames a continuing story of purpose, growth and self-definition.",
+    "OXYGEN TANK, released in 2023, is available on Kamo. G's official Spotify profile."
+  ],
+  "location": "South Africa",
+  "genre": "Hip-hop / Afro-influenced",
+  "bookingEmail": "",
+  "pressEmail": "",
+  "calComUrl": "",
+  "siteUrl": "",
   "socials": {
-    "instagram": "https://www.instagram.com/kamog2theworld",
-    "youtube": "https://youtube.com/@kamogelononyane",
-    "spotify": "https://open.spotify.com/artist/2oitpnPzsI6zqRMRqYNNgK",
-    "appleMusic": "https://music.apple.com/za/artist/kamo-g/1672687482"
+    "spotify": "",
+    "youtube": "",
+    "instagramPost": ""
   },
-  "stats": {
-    "monthlyListeners": 12450,
-    "totalStreams": 892000,
-    "followers": 8450,
-    "releases": 12
+  "images": {
+    "portraitWebp": "",
+    "portraitJpeg": "",
+    "secondaryWebp": "",
+    "secondaryJpeg": ""
   },
-  "narrative": {
-    "whySonOfMoses": "The name 'Son of Moses' is rooted in family. It's a tribute to his father, Moses — the man whose name carries the weight of legacy, faith, and identity. Born in Pretoria and raised in Kempton Park, Kamo G grew up in a home where music was everywhere. Gospel. Hip-hop. Afrobeat. Kwaito. It all blended together, and by age 9, he was already chasing the sound.\n\nAt 16, he made the choice that would define his life: music wasn't a hobby — it was the path. Every track he creates is a page from his story. 'Son of Moses' is more than a song title. It's a declaration of where he comes from, who raised him, and what he's here to say.\n\nThe album 'Oxygen Tank' (released December 2023) is the next chapter — a project that speaks to every circle of life: the struggle, the grind, the hope, and the celebration.",
-    "radioNarrative": "Kamo G (born Kamogelo Nonyane) is a Pretoria-born South African artist raised in Kempton Park. His sound blends hip-hop, Afrobeat, and raw storytelling — shaped by a childhood in a musical family where gospel, hip-hop, and kwaito all played a part.\n\nHe discovered music at age 9 and committed to the path at 16. His release 'Son of Moses' — named after his father Moses — is both a personal tribute and an identity statement. The album 'Oxygen Tank' (December 2023) represents the next evolution of his story.\n\nKamo G's mission is to create music that speaks to all walks of life — rooted in Pretoria, built in Johannesburg, and reaching for the world.",
-    "timeline": [
-      { "year": "Born in Pretoria", "desc": "Kamo G was born in Pretoria, a city that shapes his identity and sound." },
-      { "year": "Raised in Kempton Park", "desc": "Grew up on the raw edges of Kempton Park, where the suburbs met the streets." },
-      { "year": "Age 9 — Discovered Music", "desc": "Drawn to music from an early age. Growing up in a musical family, the genres blurred together — gospel, hip-hop, Afrobeat, kwaito." },
-      { "year": "Age 16 — The Decision", "desc": "Chose music as a career. Not just a dream — the only path forward." },
-      { "year": "Began Releasing Music", "desc": "Started building a catalogue of singles and EPs, blending genres and breaking rules." },
-      { "year": "Son of Moses", "desc": "A tribute to his father Moses. A declaration of identity. The song that changed everything." },
-      { "year": "Oxygen Tank (2023)", "desc": "The album released December 2023. A project that speaks to every circle of life — the struggle, the grind, the hope, and the celebration." },
-      { "year": "Next Chapter", "desc": "The story continues. New music. New stages. Same mission." }
-    ]
-  }
+  "featuredReleaseId": "",
+  "timeline": [
+    { "label": "Pretoria", "text": "Born in Pretoria, South Africa." },
+    { "label": "Kempton Park", "text": "Raised in Kempton Park in a musical family." },
+    { "label": "Age nine", "text": "Began discovering and pursuing music." },
+    { "label": "Age sixteen", "text": "Committed to music as a path." },
+    { "label": "2023", "text": "Released the album OXYGEN TANK." },
+    { "label": "Son of Moses", "text": "Developed an artistic identity centred on family legacy and purpose." }
+  ]
 }

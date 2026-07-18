@@ -1,98 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Kamo G is a Pretoria-born artist and The Son of Moses. Stream his discography — from Oxygen Tank to the latest singles.">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Verified music by Kamo. G, including the 2023 album OXYGEN TANK on Spotify.">
   <meta name="theme-color" content="#111111">
-
-  <title>Kamo G — Music</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta property="og:type" content="website"><meta property="og:title" content="Music | Kamo. G"><meta property="og:description" content="Listen to verified music by Kamo. G."><meta property="og:image" content="/assets/images/press/kamo-g-official-artist-portrait.jpg">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Music | Kamo. G"><meta name="twitter:description" content="Listen to verified music by Kamo. G."><meta name="twitter:image" content="/assets/images/press/kamo-g-official-artist-portrait.jpg">
+  <title>Music | Kamo. G</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;900&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="../css/dashboard.css">
-  <link rel="stylesheet" href="../css/pages.css">
-  <link rel="stylesheet" href="../css/responsive.css">
-
-  <script src="../js/utils.js" defer></script>
-  <script src="../js/main.js" defer></script>
+  <link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/css/dashboard.css"><link rel="stylesheet" href="/css/pages.css"><link rel="stylesheet" href="/css/responsive.css">
+  <script src="/js/utils.js" defer></script><script src="/js/main.js" defer></script>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-
-  <div id="navbar">Loading navigation...</div>
-
-  <div class="app-layout">
-    <div id="sidebar">Loading sidebar...</div>
-
-    <main id="main-content" class="app-main">
-      <div class="app-content">
-
-        <!-- Page Hero -->
-        <div class="page-hero">
-          <div class="page-hero__tag">Discography</div>
-          <h1 class="page-hero__title">Music</h1>
-          <p class="page-hero__subtitle">Every track is a chapter. From the streets of Pretoria to the world — hear the story of Kamo G, track by track.</p>
-        </div>
-
-        <!-- EP Spotlight -->
-        <div class="ep-spotlight">
-          <img src="../assets/images/releases/kamo-ep.jpg" alt="Kamo G — The EP" class="ep-spotlight__cover"
-               onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22><rect fill=%22%23222%22 width=%22200%22 height=%22200%22/><text fill=%22%23888%22 font-size=%2216%22 x=%2230%22 y=%22100%22>Kamo G EP</text></svg>'">
-          <div class="ep-spotlight__info">
-            <span class="ep-spotlight__badge">Featured Release</span>
-            <h2 class="ep-spotlight__title">Kamo G — The EP</h2>
-            <p style="color: var(--muted-light); font-size: 14px; margin-bottom: var(--space-md);">
-              6 tracks that define the sound — raw, honest, and unmistakably Kamo G.
-            </p>
-            <div class="ep-spotlight__actions">
-              <a href="https://open.spotify.com/album/kamo-ep" target="_blank" class="btn btn--gold">Listen on Spotify</a>
-              <a href="https://music.apple.com/album/kamo-ep" target="_blank" class="btn btn--outline">Apple Music</a>
-              <a href="https://soundcloud.com/kamog/sets/kamo-ep" target="_blank" class="btn btn--dark">SoundCloud</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Filter Tabs -->
-        <div class="filter-tabs">
-          <button class="filter-tab filter-tab--active" data-filter="all">All</button>
-          <button class="filter-tab" data-filter="single">Singles</button>
-          <button class="filter-tab" data-filter="ep">EPs</button>
-          <button class="filter-tab" data-filter="album">Albums</button>
-          <button class="filter-tab" data-filter="feature">Features</button>
-        </div>
-
-        <!-- Music Grid -->
-        <div id="music-grid" class="music-grid">
-          <p style="color: var(--muted);">Loading music...</p>
-        </div>
-
-      </div>
-    </main>
-  </div>
-
-  <div id="footer">Loading footer...</div>
-
-  <script>
-    async function loadComponent(id, url) {
-      try {
-        const response = await fetch(url);
-        if (response.ok) {
-          document.getElementById(id).innerHTML = await response.text();
-          // Re-initialize navigation after navbar is injected into DOM
-          if (id === 'navbar' && window.DBStudio && window.DBStudio.utils) {
-            window.DBStudio.utils.initMobileNav();
-            window.DBStudio.utils.setActiveNavLink();
-          }
-        }
-      } catch (e) { console.warn('Could not load component:', url); }
-    }
-    loadComponent('navbar', '../components/navbar.html');
-    loadComponent('sidebar', '../components/sidebar.html');
-    loadComponent('footer', '../components/footer.html');
-  </script>
-</body>
-</html>
+  <a href="#main-content" class="skip-link">Skip to main content</a><div id="navbar">Loading navigation…</div>
+  <div class="app-layout"><div id="sidebar">Loading artist navigation…</div><main id="main-content" class="app-main"><div class="app-content">
+    <header class="page-hero"><div class="page-hero__tag">Discography</div><h1 class="page-hero__title">Music</h1><p class="page-hero__subtitle">Verified releases and official listening destinations from Kamo. G.</p></header>
+    <section id="featured-release" class="ep-spotlight" aria-label="Featured verified release"><p>Loading featured release…</p></section>
+    <section class="dashboard-section" aria-labelledby="catalogue-title"><div class="dashboard-section__header"><h2 id="catalogue-title" class="dashboard-section__title">Verified catalogue</h2></div><div id="music-grid" class="music-grid"><p>Loading verified releases…</p></div></section>
+    <p class="spotify-profile-link"><a class="btn btn--outline" data-social="spotify" target="_blank" rel="noopener noreferrer">View complete discography on Spotify</a></p>
+  </div></main></div><div id="footer">Loading footer…</div>
+  <script>async function loadComponent(id,url){try{const r=await fetch(url);if(!r.ok)throw new Error('Component unavailable');document.getElementById(id).innerHTML=await r.text();if(window.KamoSite)window.KamoSite.hydrateSiteConfig(document.getElementById(id));if(window.KamoUtils){window.KamoUtils.initMobileNav();window.KamoUtils.setActiveNavLink();}}catch(e){console.warn(e.message,url);}}loadComponent('navbar','/components/navbar.html');loadComponent('sidebar','/components/sidebar.html');loadComponent('footer','/components/footer.html');</script>
+</body></html>

@@ -1,438 +1,239 @@
-/* ============================================================
-   DB STUDIO ARTIST ECOSYSTEM PLATFORM — MAIN ENTRY POINT
-   Kamo G · Version 1
-   ============================================================ */
+/* Kamo. G website rendering and interactions */
 
-document.addEventListener('DOMContentLoaded', function() {
-  // Initialize mobile navigation
-  if (window.DBStudio && window.DBStudio.utils) {
-    window.DBStudio.utils.initMobileNav();
-    window.DBStudio.utils.setActiveNavLink();
-  }
+(function() {
+  'use strict';
 
-  // Load page-specific modules based on current page
-  const currentPage = getCurrentPage();
+  var artistConfig = null;
 
-  switch (currentPage) {
-    case 'dashboard':
-      loadDashboard();
-      break;
-    case 'music':
-      loadMusicPage();
-      break;
-    case 'bookings':
-      loadBookingsPage();
-      break;
-    case 'media':
-      loadMediaPage();
-      break;
-    case 'radio':
-      loadRadioPage();
-      break;
-    case 'about':
-      loadAboutPage();
-      break;
-  }
-});
+  document.addEventListener('DOMContentLoaded', initSite);
 
-/**
- * Load dashboard page data and render
- */
-async function loadDashboard() {
-  const dashboardData = await fetchData('data/dashboard.json');
-  const artistData = await fetchData('data/artist.json');
-  const releasesData = await fetchData('data/releases.json');
+  async function initSite() {
+    artistConfig = await KamoUtils.fetchData('/data/artist.json');
+    if (!artistConfig) return;
 
-  if (!dashboardData || !artistData) return;
+    window.KamoSite = { hydrateSiteConfig: hydrateSiteConfig };
+    hydrateSiteConfig(document);
+    KamoUtils.initMobileNav();
+    KamoUtils.setActiveNavLink();
 
-  renderDashboardHero(artistData);
-  renderMetrics(dashboardData.metrics);
-  renderQuickActions(dashboardData.quickActions);
-  renderActivityFeed(dashboardData.recentActivity);
-  renderRecentReleases(releasesData);
-
-  // Initialize Chart.js sparklines if Chart.js is loaded
-  if (typeof Chart !== 'undefined') {
-    renderMetricCharts(dashboardData.metrics);
-  }
-}
-
-/**
- * Render the dashboard hero/profile section
- */
-function renderDashboardHero(artist) {
-  const hero = document.getElementById('dashboard-hero');
-  if (!hero) return;
-
-  hero.innerHTML = `
-    <img src="${artist.avatar}" alt="${artist.name}" class="dashboard-hero__avatar"
-         onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2296%22 height=%2296%22><rect fill=%22%23222%22 width=%2296%22 height=%2296%22/><text fill=%22%23888%22 font-size=%2236%22 x=%2232%22 y=%2260%22>KG</text></svg>'">
-    <div class="dashboard-hero__info">
-      <h1 class="dashboard-hero__name">${artist.name}</h1>
-      <p class="dashboard-hero__tagline">${artist.tagline} · ${artist.location}</p>
-      <div class="dashboard-hero__actions">
-        <a href="/music" class="btn btn--gold">Hear The Story</a>
-        <a href="/bookings" class="btn btn--outline">Book Kamo G</a>
-      </div>
-    </div>
-    <div class="dashboard-hero__stats">
-      <div class="dashboard-hero__stat">
-        <div class="dashboard-hero__stat-value">${formatNumberAbbreviated(artist.stats.monthlyListeners)}</div>
-        <div class="dashboard-hero__stat-label">Listeners</div>
-      </div>
-      <div class="dashboard-hero__stat">
-        <div class="dashboard-hero__stat-value">${formatNumberAbbreviated(artist.stats.totalStreams)}</div>
-        <div class="dashboard-hero__stat-label">Streams</div>
-      </div>
-      <div class="dashboard-hero__stat">
-        <div class="dashboard-hero__stat-value">${formatNumberAbbreviated(artist.stats.followers)}</div>
-        <div class="dashboard-hero__stat-label">Followers</div>
-      </div>
-    </div>
-  `;
-}
-
-/**
- * Render metric cards
- */
-function renderMetrics(metrics) {
-  const container = document.getElementById('metrics-row');
-  if (!container) return;
-
-  container.innerHTML = metrics.map(metric => `
-    <div class="dashboard-card" data-metric-id="${metric.id}">
-      <div class="dashboard-card__header">
-        <div class="dashboard-card__icon">${getIconHTML(metric.icon)}</div>
-        <span class="dashboard-card__trend dashboard-card__trend--${metric.changeDirection}">
-          ${metric.changeDirection === 'up' ? '↑' : '↓'} ${metric.change}%
-        </span>
-      </div>
-      <div class="dashboard-card__label">${metric.label}</div>
-      <div class="dashboard-card__value">${metric.prefix}${formatNumberAbbreviated(metric.value)}${metric.suffix}</div>
-      <div class="dashboard-card__chart">
-        <canvas id="chart-${metric.id}" width="200" height="48"></canvas>
-      </div>
-    </div>
-  `).join('');
-}
-
-/**
- * Render Chart.js sparkline charts on metric cards
- */
-function renderMetricCharts(metrics) {
-  metrics.forEach(metric => {
-    const canvas = document.getElementById('chart-' + metric.id);
-    if (!canvas) return;
-
-    new Chart(canvas, {
-      type: 'line',
-      data: {
-        labels: metric.chartData.map(() => ''),
-        datasets: [{
-          data: metric.chartData,
-          borderColor: metric.changeDirection === 'up' ? '#10b981' : '#ef4444',
-          backgroundColor: 'transparent',
-          borderWidth: 2,
-          pointRadius: 0,
-          tension: 0.4,
-          fill: false
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
-        scales: {
-          x: { display: false },
-          y: { display: false }
-        },
-        elements: {
-          point: { radius: 0 }
-        }
-      }
+    var observer = new MutationObserver(function() {
+      hydrateSiteConfig(document);
+      KamoUtils.initMobileNav();
+      KamoUtils.setActiveNavLink();
     });
-  });
-}
+    observer.observe(document.body, { childList: true, subtree: true });
 
-/**
- * Render quick action cards
- */
-function renderQuickActions(actions) {
-  const container = document.getElementById('quick-actions');
-  if (!container) return;
+    var page = KamoUtils.getCurrentPage();
+    if (page === 'home') await loadHome();
+    if (page === 'music') await loadMusic();
+    if (page === 'media') await loadMedia();
+    if (page === 'radio') await loadRadio();
+    if (page === 'about') loadAbout();
+    if (page === 'bookings') loadBookings();
+  }
 
-  container.innerHTML = actions.map(action => `
-    <a href="${action.link}" class="quick-action">
-      <div class="quick-action__icon">${getIconHTML(action.label === 'Latest Release' ? 'music' : action.label === 'Upcoming Show' ? 'calendar' : 'download')}</div>
-      <div class="quick-action__label">${action.label}</div>
-      <div class="quick-action__value">${action.value}</div>
-    </a>
-  `).join('');
-}
+  function hydrateSiteConfig(root) {
+    if (!artistConfig) return;
+    root.querySelectorAll('[data-artist-name]').forEach(function(node) { node.textContent = artistConfig.name; });
+    root.querySelectorAll('[data-artist-tagline]').forEach(function(node) { node.textContent = artistConfig.tagline; });
+    root.querySelectorAll('[data-current-year]').forEach(function(node) { node.textContent = new Date().getFullYear(); });
 
-/**
- * Render activity feed
- */
-function renderActivityFeed(activities) {
-  const container = document.getElementById('activity-feed');
-  if (!container) return;
+    root.querySelectorAll('[data-booking-email]').forEach(function(node) {
+      var email = artistConfig.bookingEmail;
+      if (!email) {
+        node.hidden = true;
+        return;
+      }
+      node.hidden = false;
+      node.textContent = email;
+      if (node.tagName === 'A') node.href = 'mailto:' + email;
+    });
 
-  container.innerHTML = `
-    <div class="activity-feed__header">
-      <h3 class="activity-feed__title">Recent Activity</h3>
-    </div>
-    ${activities.map(activity => `
-      <div class="activity-item">
-        <div class="activity-item__dot activity-item__dot--${activity.type}"></div>
-        <div class="activity-item__content">
-          <div class="activity-item__text">${activity.text || activity.title}</div>
-          <div class="activity-item__date">${formatDate(activity.date)}</div>
-        </div>
-      </div>
-    `).join('')}
-  `;
-}
+    root.querySelectorAll('[data-social]').forEach(function(node) {
+      var url = artistConfig.socials[node.dataset.social];
+      if (!url) {
+        node.hidden = true;
+        return;
+      }
+      node.hidden = false;
+      node.href = url;
+    });
+  }
 
-/**
- * Render recent releases on dashboard
- */
-function renderRecentReleases(releases) {
-  const container = document.getElementById('recent-releases');
-  if (!container) return;
+  async function loadHome() {
+    var releases = await KamoUtils.fetchData('/data/releases.json') || [];
+    renderHomeHero();
+    renderArtistHeadquarters(releases);
+    renderReleaseCards(document.getElementById('recent-releases'), releases);
+  }
 
-  const recent = releases.slice(0, 4);
+  function renderHomeHero() {
+    var container = document.getElementById('dashboard-hero');
+    if (!container) return;
+    var image = artistConfig.images.portraitJpeg;
+    container.innerHTML = (image ? '<img src="' + image + '" alt="Kamo. G official artist portrait" class="dashboard-hero__avatar">' : '') +
+      '<div class="dashboard-hero__info">' +
+        '<div class="dashboard-hero__tagline-ecosystem">Official artist website</div>' +
+        '<h1 class="dashboard-hero__name">' + artistConfig.name + '</h1>' +
+        '<p class="dashboard-hero__tagline">' + artistConfig.tagline + '</p>' +
+        '<div class="dashboard-hero__actions">' +
+          '<a href="/music" class="btn btn--gold">Listen</a>' +
+          '<a href="/bookings" class="btn btn--outline">Book Kamo. G</a>' +
+        '</div>' +
+      '</div>';
+  }
 
-  container.innerHTML = recent.map(release => `
-    <div class="track-card ${release.type === 'ep' ? 'track-card--ep' : ''}">
-      <img src="${release.coverArt}" alt="${release.title}" class="track-card__cover"
-           onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22><rect fill=%22%23222%22 width=%22300%22 height=%22300%22/><text fill=%22%23888%22 font-size=%2216%22 x=%2250%22 y=%22150%22>${release.title}</text></svg>'">
-      <div class="track-card__body">
-        <div class="track-card__title">${release.title}</div>
-        <div class="track-card__meta">
-          ${release.type === 'ep' ? '<span class="track-card__badge track-card__badge--ep">EP</span>' : ''}
-          <span class="track-card__year">${release.year}</span>
-        </div>
-        <div class="track-card__actions">
-          ${release.spotifyUrl ? `<a href="${release.spotifyUrl}" target="_blank" class="btn btn--gold btn--sm">Listen</a>` : ''}
-        </div>
-      </div>
-    </div>
-  `).join('');
-}
+  function renderArtistHeadquarters(releases) {
+    var container = document.getElementById('artist-hq');
+    if (!container) return;
+    var featured = releases.find(function(release) { return release.id === artistConfig.featuredReleaseId; });
+    var cards = [];
+    if (featured) cards.push({ icon: 'music', label: 'Verified release', value: featured.title + ' • ' + featured.year, href: featured.spotifyUrl, external: true });
+    if (artistConfig.socials.spotify) cards.push({ icon: 'play', label: 'Listen on Spotify', value: 'Official artist profile', href: artistConfig.socials.spotify, external: true });
+    if (artistConfig.socials.youtube) cards.push({ icon: 'play', label: 'Watch on YouTube', value: 'Official channel', href: artistConfig.socials.youtube, external: true });
+    cards.push({ icon: 'calendar', label: 'Book Kamo. G', value: artistConfig.calComUrl ? 'Choose a time' : 'Email booking enquiries', href: '/bookings' });
+    cards.push({ icon: 'download', label: 'Radio pack', value: 'Approved press downloads', href: '/radio' });
 
-/**
- * Load music page
- */
-async function loadMusicPage() {
-  const releases = await fetchData('data/releases.json');
-  if (!releases) return;
+    container.innerHTML = cards.map(function(card) {
+      return '<a class="quick-action" href="' + card.href + '"' + (card.external ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' +
+        '<div class="quick-action__icon">' + KamoUtils.iconSVG(card.icon, 24) + '</div>' +
+        '<div class="quick-action__label">' + card.label + '</div>' +
+        '<div class="quick-action__value">' + card.value + '</div>' +
+      '</a>';
+    }).join('');
+  }
 
-  renderMusicGrid(releases);
-  initMusicFilters(releases);
-}
+  async function loadMusic() {
+    var releases = await KamoUtils.fetchData('/data/releases.json') || [];
+    var featured = releases.find(function(release) { return release.id === artistConfig.featuredReleaseId; }) || releases[0];
+    var spotlight = document.getElementById('featured-release');
+    if (spotlight) {
+      spotlight.innerHTML = featured ?
+        '<div class="ep-spotlight__info">' +
+          '<span class="ep-spotlight__badge">Verified release</span>' +
+          '<h2 class="ep-spotlight__title">' + featured.title + '</h2>' +
+          '<p>' + featured.description + '</p>' +
+          '<p class="release-facts">' + featured.type + ' • ' + featured.year + '</p>' +
+          '<a href="' + featured.spotifyUrl + '" class="btn btn--gold" target="_blank" rel="noopener noreferrer">Open in Spotify</a>' +
+        '</div>' +
+        '<iframe class="spotify-embed" src="' + featured.spotifyEmbedUrl + '" title="Listen to ' + featured.title + ' on Spotify" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>' :
+        emptyState('No release has been verified for publication yet.');
+    }
+    renderReleaseCards(document.getElementById('music-grid'), releases);
+  }
 
-function renderMusicGrid(releases) {
-  const container = document.getElementById('music-grid');
-  if (!container) return;
+  function renderReleaseCards(container, releases) {
+    if (!container) return;
+    if (!releases.length) {
+      container.innerHTML = emptyState('Verified releases will appear here.');
+      return;
+    }
+    container.innerHTML = releases.map(function(release) {
+      return '<article class="track-card">' +
+        '<div class="release-card__art">' + KamoUtils.iconSVG('music', 38) + '</div>' +
+        '<div class="track-card__body">' +
+          '<h3 class="track-card__title">' + release.title + '</h3>' +
+          '<div class="track-card__meta"><span class="track-card__badge">' + release.type + '</span><span class="track-card__year">' + release.year + '</span></div>' +
+          '<p class="track-card__description">' + release.description + '</p>' +
+          '<a href="' + release.spotifyUrl + '" class="btn btn--gold btn--sm" target="_blank" rel="noopener noreferrer">Spotify</a>' +
+        '</div>' +
+      '</article>';
+    }).join('');
+  }
 
-  container.innerHTML = releases.map(release => `
-    <div class="track-card ${release.type === 'ep' ? 'track-card--ep' : ''}" data-type="${release.type}">
-      <img src="${release.coverArt}" alt="${release.title}" class="track-card__cover"
-           onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22><rect fill=%22%23222%22 width=%22300%22 height=%22300%22/><text fill=%22%23888%22 font-size=%2216%22 x=%2250%22 y=%22150%22>${release.title}</text></svg>'">
-      <div class="track-card__body">
-        <div class="track-card__title">${release.title}</div>
-        <div class="track-card__meta">
-          ${release.type === 'ep' ? '<span class="track-card__badge track-card__badge--ep">EP</span>' : ''}
-          <span class="track-card__year">${release.year}</span>
-        </div>
-        <div class="track-card__actions">
-          ${release.spotifyUrl ? `<a href="${release.spotifyUrl}" target="_blank" class="btn btn--gold btn--sm">Spotify</a>` : ''}
-          ${release.youtubeUrl ? `<a href="${release.youtubeUrl}" target="_blank" class="btn btn--dark btn--sm">YouTube</a>` : ''}
-        </div>
-      </div>
-    </div>
-  `).join('');
-}
+  async function loadMedia() {
+    var gallery = await KamoUtils.fetchData('/data/gallery.json') || [];
+    var container = document.getElementById('media-gallery');
+    if (!container) return;
+    if (!gallery.length) {
+      container.innerHTML = emptyState('Approved photographs will appear here.');
+      return;
+    }
+    container.innerHTML = gallery.map(function(item, index) {
+      return '<button class="media-gallery__item" type="button" data-lightbox-index="' + index + '" aria-label="Open ' + item.caption + '">' +
+        '<picture><source srcset="' + item.webp + '" type="image/webp"><img src="' + item.jpeg + '" alt="' + item.alt + '" loading="lazy"></picture>' +
+        '<span class="media-gallery__item-overlay"><span class="media-gallery__item-caption">' + item.caption + '</span></span>' +
+      '</button>';
+    }).join('');
+    initLightbox(gallery);
+  }
 
-function initMusicFilters(releases) {
-  const tabs = document.querySelectorAll('.filter-tab');
-  if (!tabs.length) return;
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', function() {
-      // Update active tab
-      tabs.forEach(t => t.classList.remove('filter-tab--active'));
-      this.classList.add('filter-tab--active');
-
-      // Filter releases
-      const filter = this.dataset.filter;
-      const cards = document.querySelectorAll('.track-card');
-
-      cards.forEach(card => {
-        if (filter === 'all' || card.dataset.type === filter) {
-          card.style.display = '';
-        } else {
-          card.style.display = 'none';
-        }
+  function initLightbox(gallery) {
+    var dialog = document.getElementById('media-lightbox');
+    var image = dialog && dialog.querySelector('img');
+    var caption = dialog && dialog.querySelector('[data-lightbox-caption]');
+    if (!dialog || !image || !caption) return;
+    document.querySelectorAll('[data-lightbox-index]').forEach(function(button) {
+      button.addEventListener('click', function() {
+        var item = gallery[Number(button.dataset.lightboxIndex)];
+        image.src = item.jpeg;
+        image.alt = item.alt;
+        caption.textContent = item.caption;
+        dialog.showModal();
       });
     });
-  });
-}
-
-/**
- * Load bookings page
- */
-async function loadBookingsPage() {
-  // Bookings page is primarily a Typeform embed placeholder
-  // No dynamic data loading needed for Sprint 1
-}
-
-/**
- * Load media page
- */
-async function loadMediaPage() {
-  const gallery = await fetchData('data/gallery.json');
-  if (!gallery) return;
-
-  renderGallery(gallery);
-}
-
-function renderGallery(items) {
-  const container = document.getElementById('media-gallery');
-  if (!container) return;
-
-  const images = items.filter(item => item.type === 'image');
-
-  container.innerHTML = images.map(item => `
-    <div class="media-gallery__item">
-      <img src="${item.src}" alt="${item.alt}"
-           onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22><rect fill=%22%23222%22 width=%22400%22 height=%22300%22/><text fill=%22%23888%22 font-size=%2214%22 x=%2280%22 y=%22150%22>Photo</text></svg>'">
-      <div class="media-gallery__item-overlay">
-        <div class="media-gallery__item-caption">${item.caption}</div>
-      </div>
-    </div>
-  `).join('');
-}
-
-/**
- * Load radio pack page
- */
-async function loadRadioPage() {
-  const radio = await fetchData('data/radio.json');
-  const artist = await fetchData('data/artist.json');
-  if (!radio) return;
-
-  renderRadioPack(radio, artist);
-}
-
-function renderRadioPack(radio, artist) {
-  const container = document.getElementById('radio-main');
-  if (!container) return;
-
-  const narrative = artist && artist.narrative ? artist.narrative.radioNarrative : '';
-
-  container.innerHTML = `
-    <h1 class="radio-main__title">${radio.title}</h1>
-    <p class="radio-main__description">${radio.description}</p>
-
-    ${narrative ? `
-    <div class="radio-contents" style="margin-top: var(--space-lg);">
-      <h3 class="radio-contents__title">About Kamo G</h3>
-      <p style="font-size: 14px; color: var(--muted-light); line-height: 1.7; margin-bottom: var(--space-md);">${narrative.replace(/\n/g, '<br>')}</p>
-    </div>
-    ` : ''}
-
-    <div class="radio-contents">
-      <h3 class="radio-contents__title">Pack Contents</h3>
-      <ul class="radio-contents__list">
-        ${radio.contents.map(item => `<li class="radio-contents__item">${item}</li>`).join('')}
-      </ul>
-    </div>
-
-    <div class="radio-actions">
-      <a href="${radio.epkDownloadUrl}" target="_blank" class="btn btn--gold btn--lg">Download Full EPK</a>
-      <a href="${radio.bioPdfUrl}" target="_blank" class="btn btn--outline btn--lg">View Bio (PDF)</a>
-      <a href="${radio.audioDownloadUrl}" target="_blank" class="btn btn--dark btn--lg">Download Audio</a>
-    </div>
-
-    <p class="mt-lg text-muted" style="font-size: 12px;">Last updated: ${formatDate(radio.lastUpdated)}</p>
-  `;
-}
-
-/**
- * Load about page
- */
-async function loadAboutPage() {
-  const artist = await fetchData('data/artist.json');
-  if (!artist) return;
-
-  renderAboutPage(artist);
-}
-
-function renderAboutPage(artist) {
-  const hero = document.getElementById('about-hero');
-  const content = document.getElementById('about-content');
-  const stats = document.getElementById('about-stats');
-
-  if (hero) {
-    hero.innerHTML = `
-      <img src="${artist.coverImage}" alt="${artist.name}" class="about-hero__image"
-           onerror="this.style.display='none'">
-      <div class="about-hero__overlay">
-        <h1 class="about-hero__title">${artist.name}</h1>
-      </div>
-    `;
+    dialog.querySelector('[data-lightbox-close]').addEventListener('click', function() { dialog.close(); });
+    dialog.addEventListener('click', function(event) { if (event.target === dialog) dialog.close(); });
   }
 
-  if (content) {
-    content.innerHTML = `
-      <div class="about-content__text">
-        <p>${artist.bio}</p>
-        <p>From Pretoria to Johannesburg, Kamo G is carving out a space that's entirely his own. His sound — a fusion of hip-hop, Afrobeat, and raw storytelling — reflects the journey of a young man who decided at 16 that music was the only path.</p>
-        <p>With over ${formatNumber(artist.stats.totalStreams)} streams worldwide, the story of "Son of Moses" is reaching listeners across the globe. But this is just the beginning. The album "Oxygen Tank" is coming.</p>
-      </div>
-      <div class="about-content__image">
-        <img src="${artist.avatar}" alt="${artist.name}"
-             onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22500%22 height=%22500%22><rect fill=%22%23222%22 width=%22500%22 height=%22500%22/><text fill=%22%23888%22 font-size=%2220%22 x=%22180%22 y=%22250%22>Photo</text></svg>'">
-      </div>
-    `;
+  function loadBookings() {
+    var container = document.getElementById('booking-main');
+    if (!container) return;
+    var email = artistConfig.bookingEmail;
+    if (artistConfig.calComUrl) {
+      container.innerHTML = '<h2>Choose a booking time</h2><p>If the scheduler does not load, use the direct booking link or email.</p>' +
+        '<div id="cal-embed" class="cal-embed" data-cal-url="' + artistConfig.calComUrl + '"></div>' +
+        '<div class="booking-actions"><a class="btn btn--gold" href="' + artistConfig.calComUrl + '" target="_blank" rel="noopener noreferrer">Open booking calendar</a>' + emailButton(email) + '</div>';
+    } else {
+      container.innerHTML = '<div class="booking-fallback">' + KamoUtils.iconSVG('calendar', 42) +
+        '<h2>Booking enquiries</h2><p>Public scheduling is not yet connected. Email the booking team with your event date, location and enquiry details.</p>' +
+        (email ? emailButton(email) : '<p class="status-note">A public booking contact is awaiting confirmation.</p>') + '</div>';
+    }
   }
 
-  if (stats) {
-    stats.innerHTML = `
-      <div class="about-stat">
-        <div class="about-stat__value">${formatNumberAbbreviated(artist.stats.monthlyListeners)}</div>
-        <div class="about-stat__label">Monthly Listeners</div>
-      </div>
-      <div class="about-stat">
-        <div class="about-stat__value">${formatNumberAbbreviated(artist.stats.totalStreams)}</div>
-        <div class="about-stat__label">Total Streams</div>
-      </div>
-      <div class="about-stat">
-        <div class="about-stat__value">${formatNumberAbbreviated(artist.stats.followers)}</div>
-        <div class="about-stat__label">Followers</div>
-      </div>
-      <div class="about-stat">
-        <div class="about-stat__value">${artist.stats.releases}</div>
-        <div class="about-stat__label">Releases</div>
-      </div>
-    `;
+  async function loadRadio() {
+    var radio = await KamoUtils.fetchData('/data/radio.json');
+    var container = document.getElementById('radio-main');
+    if (!container || !radio) return;
+    var groups = radio.groups || [];
+    var html = '<h2 class="radio-main__title">' + radio.title + '</h2><p class="radio-main__description">' + radio.description + '</p>';
+    if (!groups.length) html += emptyState('Approved public downloads are being prepared.');
+    groups.forEach(function(group) {
+      html += '<section class="download-group"><h3>' + group.title + '</h3>';
+      if (!group.items.length) html += '<p class="status-note">' + group.emptyMessage + '</p>';
+      else html += '<div class="download-grid">' + group.items.map(downloadCard).join('') + '</div>';
+      html += '</section>';
+    });
+    if (radio.completePack) html += '<section class="download-group"><h3>Complete Pack</h3><div class="download-grid">' + downloadCard(radio.completePack) + '</div></section>';
+    if (radio.lastUpdated) html += '<p class="radio-updated">Last updated: ' + radio.lastUpdated + '</p>';
+    container.innerHTML = html;
   }
-}
 
-/**
- * Helper: Get icon HTML (simple unicode/emoji icons)
- */
-function getIconHTML(icon) {
-  var icons = {
-    'headphones': 'headphones',
-    'music': 'music',
-    'users': 'users',
-    'activity': 'activity',
-    'calendar': 'calendar',
-    'download': 'download',
-    'play': 'play',
-    'star': 'star'
-  };
-  return iconSVG(icons[icon] || 'music', 18);
-}
+  function downloadCard(item) {
+    var details = [item.format, KamoUtils.formatFileSize(item.sizeBytes), item.durationSeconds ? KamoUtils.formatDuration(item.durationSeconds) : '', item.dimensions || ''].filter(Boolean).join(' • ');
+    return '<article class="download-card"><div class="download-card__icon">' + KamoUtils.iconSVG('download', 22) + '</div>' +
+      '<div class="download-card__body"><h4>' + item.title + '</h4><p class="download-card__meta">' + details + '</p>' +
+      (item.status ? '<span class="download-card__status">' + item.status + '</span>' : '') +
+      (item.description ? '<p>' + item.description + '</p>' : '') + '</div>' +
+      '<a class="btn btn--gold btn--sm" href="' + item.path + '" download>Download</a></article>';
+  }
+
+  function loadAbout() {
+    var hero = document.getElementById('about-hero');
+    if (hero && artistConfig.images.portraitJpeg) {
+      hero.innerHTML = '<picture><source srcset="' + artistConfig.images.portraitWebp + '" type="image/webp"><img src="' + artistConfig.images.portraitJpeg + '" alt="Kamo. G official artist portrait" class="about-hero__image"></picture><div class="about-hero__overlay"><h1 class="about-hero__title">' + artistConfig.name + '</h1></div>';
+    }
+    var content = document.getElementById('about-content');
+    if (content) content.innerHTML = '<div class="about-content__text"><h2>The story</h2>' + artistConfig.bio.map(function(paragraph) { return '<p>' + paragraph + '</p>'; }).join('') + '</div>';
+    var timeline = document.getElementById('about-timeline');
+    if (timeline) timeline.innerHTML = artistConfig.timeline.map(function(item) { return '<div class="timeline-item"><div class="timeline-item__label">' + item.label + '</div><p>' + item.text + '</p></div>'; }).join('');
+  }
+
+  function emailButton(email) {
+    return '<a class="btn btn--gold" href="mailto:' + email + '">' + KamoUtils.iconSVG('mail', 16) + ' Email booking team</a>';
+  }
+
+  function emptyState(message) {
+    return '<div class="empty-state">' + KamoUtils.iconSVG('info', 24) + '<p>' + message + '</p></div>';
+  }
+})();
