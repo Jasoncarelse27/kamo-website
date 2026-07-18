@@ -51,9 +51,9 @@ git diff --check
 
 ## Downloads
 
-The public pack is under `assets/downloads/kamo-g-radio-pack/`. It currently contains the two supplied original press portraits and an integrity-tested ZIP. Supplied audio is not published because its titles, ownership, and clean/broadcast status are not documented.
+The public pack is under `assets/downloads/kamo-g-radio-pack/`. It contains the two supplied original press portraits, the approved clean and explicit radio voice notes in their original M4A format, and an integrity-tested ZIP containing all four files. No audio was transcoded.
 
-See `CLIENT_ASSET_MANIFEST.md`, `RADIO_PACK_MANIFEST.md`, and `HANDOVER.md` for checksums, conversion details, withheld assets, and remaining client decisions.
+See `CLIENT_ASSET_MANIFEST.md`, `RADIO_PACK_MANIFEST.md`, and `HANDOVER.md` for checksums, conversion details, publication decisions, and remaining client inputs.
 
 ## Deployment boundary
 

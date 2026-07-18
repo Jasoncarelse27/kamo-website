@@ -85,7 +85,7 @@
     if (artistConfig.socials.spotify) cards.push({ icon: 'play', label: 'Listen on Spotify', value: 'Official artist profile', href: artistConfig.socials.spotify, external: true });
     if (artistConfig.socials.youtube) cards.push({ icon: 'play', label: 'Watch on YouTube', value: 'Official channel', href: artistConfig.socials.youtube, external: true });
     cards.push({ icon: 'calendar', label: 'Book Kamo. G', value: artistConfig.calComUrl ? 'Choose a time' : 'Email booking enquiries', href: '/bookings' });
-    cards.push({ icon: 'download', label: 'Radio pack', value: 'Approved press downloads', href: '/radio' });
+    cards.push({ icon: 'download', label: 'Radio pack', value: 'Approved audio and press downloads', href: '/radio' });
 
     container.innerHTML = cards.map(function(card) {
       return '<a class="quick-action" href="' + card.href + '"' + (card.external ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' +

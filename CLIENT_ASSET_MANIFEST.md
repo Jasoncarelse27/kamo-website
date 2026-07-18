@@ -20,14 +20,14 @@ No photographer credit, location, event, shoot date, or campaign title was suppl
 
 The untouched public JPEG originals retain EXIF/IPTC/XMP/Photoshop profiles and embedded thumbnails. A targeted metadata review reported no values in the checked GPS, email, artist/creator, copyright, or camera-serial fields. Other embedded fields were not represented as empty. These originals were deliberately not stripped or modified.
 
-## Withheld audio
+## Approved radio voice notes
 
-| Intake filename | Detected type | Bytes | Audio metadata | SHA-256 | Proposed use | Status |
-|---|---:|---:|---|---|---|---|
-| `AUDIO-2026-07-08-17-02-12.m4a` | ISO Base Media / M4A; AAC-LC | 607,003 | 48 kHz mono; stream bitrate 71,142 bps; container bitrate 74,901 bps; duration 64.832 s; no embedded title, artist, or album | `1e121068fb93275ca29196415e35430b4462ba54d5eea4f7d1ed922f2e3ef329` | None until identified | Withheld — title, ownership, intended use, and clean/broadcast status unconfirmed |
-| `AUDIO-2026-07-08-17-01-58.m4a` | ISO Base Media / M4A; AAC-LC | 427,030 | 48 kHz mono; stream bitrate 71,033 bps; container bitrate 74,865 bps; duration 45.632 s; no embedded title, artist, or album | `0876a66d50e0d96f0b54e0c0e9d6aa5214941bfb425c0d73b033082a3aade24f` | None until identified | Withheld — title, ownership, intended use, and clean/broadcast status unconfirmed |
+| Intake filename | Detected type | Bytes | Audio metadata | SHA-256 | Public filename / use | Processing | Status |
+|---|---:|---:|---|---|---|---|---|
+| `Kamo-clean.m4a` (same bytes as the previously catalogued `AUDIO-2026-07-08-17-01-58.m4a`) | ISO Base Media / M4A; AAC-LC | 427,030 | 48 kHz mono; stream bitrate 71,033 bps; container bitrate 74,865 bps; duration 45.632 s; no embedded title, artist, or album | `0876a66d50e0d96f0b54e0c0e9d6aa5214941bfb425c0d73b033082a3aade24f` | `assets/downloads/kamo-g-radio-pack/audio/kamo-g-radio-voice-note-clean.m4a`; clean radio voice note | Byte-identical original copied under a professional public filename; no conversion or metadata rewrite | Public — approved clean version |
+| `Kamo-dirty.m4a` (same bytes as the previously catalogued `AUDIO-2026-07-08-17-02-12.m4a`) | ISO Base Media / M4A; AAC-LC | 607,003 | 48 kHz mono; stream bitrate 71,142 bps; container bitrate 74,901 bps; duration 64.832 s; no embedded title, artist, or album | `1e121068fb93275ca29196415e35430b4462ba54d5eea4f7d1ed922f2e3ef329` | `assets/downloads/kamo-g-radio-pack/audio/kamo-g-radio-voice-note-explicit.m4a`; explicit radio voice note | Byte-identical original copied under a professional public filename; no conversion or metadata rewrite | Public — approved explicit version |
 
-The M4A originals were inspected with `ffprobe` and were not copied into the public repository, renamed by assumption, transcoded, or labelled clean. Their creation-time container tags are not treated as release dates or public titles.
+The Downloads source hashes were verified before copying. `ffprobe` confirmed the file sizes, exact durations, AAC audio streams, 48 kHz mono layout, bitrates, and absence of embedded title, artist, or album values. The original M4A bytes were preserved without transcoding, remuxing, normalization, trimming, or tag changes. Creation-time container tags are not treated as release dates or public titles.
 
 ## Exclusions
 

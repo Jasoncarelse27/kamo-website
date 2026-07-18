@@ -30,7 +30,7 @@ The biography uses approved project material and restrained factual language. �
 - `/` is an Artist HQ with direct actions for Spotify, YouTube, Instagram, bookings, and the radio pack.
 - `/music` contains one positively matched release and Spotify’s supported album embed, plus a complete-discography link to the official artist page.
 - `/media` contains only the two supplied photographs, an accessible native lightbox, the official YouTube channel, and the supplied Instagram post.
-- `/radio` renders only physically present public files with measured sizes, dimensions, SHA-256 values, and direct downloads.
+- `/radio` renders only physically present public files with measured sizes, durations or dimensions, SHA-256 values, and direct downloads.
 - `/bookings` uses the functional `mailto:kgnon6@gmail.com` enquiry fallback. When `data/artist.json` contains an approved Kamo-owned public `calComUrl`, the page exposes an external booking-calendar link. No inline embed is implemented.
 - Metadata, meaningful page titles, approved social-image references, image alternatives, safe external-link attributes, and responsive navigation are present on every route.
 
@@ -58,9 +58,11 @@ Current public pack:
 
 - Kamo. G — Official Artist Portrait (original JPEG)
 - Kamo. G — Press Portrait (original JPEG)
-- Kamo. G Radio Pack — Approved Photography (verified ZIP containing those two files)
+- Kamo. G Radio Voice Note — Clean (original M4A; 45.632 seconds)
+- Kamo. G Radio Voice Note — Explicit (original M4A; 64.832 seconds)
+- Kamo. G Radio Pack — Audio and Photography (verified ZIP containing all four files)
 
-Two supplied M4A recordings are withheld. Their measured technical metadata is recorded, but their titles, ownership, intended use, and clean/broadcast status are unconfirmed. No conversion was made and no audio is exposed publicly.
+The client identified and approved `Kamo-clean.m4a` and `Kamo-dirty.m4a` as the clean and explicit Kamo. G radio voice notes. Their SHA-256 identities matched the previously catalogued recordings before copying. The public M4As retain the original bytes and measured metadata; no transcoding, remuxing, trimming, normalization, or tag changes were made.
 
 The public original JPEG downloads retain EXIF/IPTC/XMP/Photoshop profiles and embedded thumbnails. A targeted metadata review reported no values in the checked GPS, email, artist/creator, copyright, or camera-serial fields; it was not an assertion that every embedded field is empty. The originals were not altered or stripped.
 
@@ -88,10 +90,9 @@ No DB Reply, project-review, personal, studio-administration, or fabricated cale
 Only these concrete inputs remain:
 
 1. Supply and confirm the public Kamo-owned Cal.com event URL, if an external booking-calendar link is wanted.
-2. Identify both supplied M4A recordings and provide written confirmation of ownership, intended public use, and clean/broadcast status before any audio is published.
-3. Supply approved biography/press documents, cover artwork, clean audio masters, or additional photography only if they should be added to the public pack.
-4. Confirm the final public domain, Netlify ownership, DNS ownership, and Production launch approver.
-5. Confirm whether analytics is required and, if so, provide the owned property and consent/privacy requirements.
+2. Supply approved biography/press documents, cover artwork, clean audio masters, or additional photography only if they should be added to the public pack.
+3. Confirm the final public domain, Netlify ownership, DNS ownership, and Production launch approver.
+4. Confirm whether analytics is required and, if so, provide the owned property and consent/privacy requirements.
 
 ## Launch checklist
 
@@ -99,8 +100,8 @@ Only these concrete inputs remain:
 - [x] Verify official artist destinations and featured album
 - [x] Import and optimize the two supplied photographs
 - [x] Publish working individual photo downloads and an integrity-tested ZIP
+- [x] Publish the approved clean and explicit radio voice notes without conversion
 - [x] Preserve an honest booking-email fallback
-- [x] Keep unconfirmed audio private
 - [ ] Validate the exact final feature-branch tree locally
 - [ ] Record and approve the final Kamo-owned Cal.com URL, if required
 - [ ] Confirm final domain and account ownership
