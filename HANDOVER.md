@@ -1,150 +1,110 @@
-# Kamo G Website Handover
+# Kamo. G Website Handover
 
-## Project identity
+Last updated: 18 July 2026
 
-- Project: Kamo G — Son of Moses Experience
-- Purpose: public artist website for music, bookings, media, radio resources, and artist storytelling
+## Project identity and safety
+
+- Project: Kamo. G public artist website
 - Official remote: `https://github.com/Jasoncarelse27/kamo-website.git`
-- Clean recovery workspace: `/Users/jasoncarelse/Documents/kamo-website-clean-20260716`
-- Recovery branch: `recovery/kamo-handover-20260716`
+- Workspace: canonical clean repository
+- Delivery branch: `feature/kamo-client-ready-20260718`
 - Recovery base: `d1c20d826c62b6671c171e590386754f94ca5f2c`
 - Recovery evidence: `RECOVERY_MANIFEST.md`
 
-The damaged checkout was preserved separately and was not repaired in place. Filesystem comparison proved that all 49 ordinary project files already matched the clean remote base; no unpublished website bytes required recovery.
+The damaged checkout remains preserved and read-only. A checksum comparison found no unrecovered client-ready files. Its supplied portrait files are byte-identical to the approved originals already imported here; its other unique assets and data belong to the retired placeholder prototype and were not copied.
 
-## Routes
+## Verified public information
 
-| Route | Purpose |
-|---|---|
-| `/` | Artist dashboard and Son of Moses introduction |
-| `/music` | Discography and streaming links |
-| `/bookings` | Booking contact and event summary |
-| `/media` | Photography and video placeholders |
-| `/radio` | Radio pack and press resources |
-| `/about` | Biography, narrative, and artist statistics |
+- Public artist spelling: **Kamo. G**; “Kamo G” is retained only where useful for search and filenames.
+- Spotify artist: `https://open.spotify.com/artist/2oitpnPzsI6zqRMRqYNNgK`
+- Verified featured album: **OXYGEN TANK** (2023)
+- Spotify album: `https://open.spotify.com/album/4x34u2u5h0eARAbcn93FRd`
+- YouTube: `https://www.youtube.com/@kamogelononyane`
+- Supplied Instagram destination: `https://www.instagram.com/p/DSvTFaXjGuW/`
+- Booking and press email: `kgnon6@gmail.com`
 
-## Implemented features
+The biography uses approved project material and restrained factual language. “Son of Moses” is presented as an artistic identity/campaign concept, not as a released track.
 
-- Responsive desktop and mobile navigation
-- Artist biography and Son of Moses narrative
-- Music catalogue rendering and filtering
-- Booking contact path
-- Media gallery
-- Radio-pack presentation
-- Social-profile links
-- JSON-driven dashboard metrics and activity
-- Netlify clean-route redirects
-- Image fallbacks and alternative text
+## Public implementation
 
-## Client and launch statuses
+- `/` is an Artist HQ with direct actions for Spotify, YouTube, Instagram, bookings, and the radio pack.
+- `/music` contains one positively matched release and Spotify’s supported album embed, plus a complete-discography link to the official artist page.
+- `/media` contains only the two supplied photographs, an accessible native lightbox, the official YouTube channel, and the supplied Instagram post.
+- `/radio` renders only physically present public files with measured sizes, dimensions, SHA-256 values, and direct downloads.
+- `/bookings` uses the functional `mailto:kgnon6@gmail.com` enquiry fallback. When `data/artist.json` contains an approved Kamo-owned public `calComUrl`, the page exposes an external booking-calendar link. No inline embed is implemented.
+- Metadata, meaningful page titles, approved social-image references, image alternatives, safe external-link attributes, and responsive navigation are present on every route.
 
-| Area | Status | Evidence / required action |
-|---|---|---|
-| Final domain | Unverifiable | No approved custom domain is recorded in the repository or accessible Netlify session. |
-| Booking email | Unverifiable | `misfitrecords2@gmail.com` is displayed, but final client approval and mailbox ownership are not documented. |
-| Cal.com | Technically incomplete | No Cal.com integration or client-owned scheduling link exists in this repository. |
-| Tour information | Waiting for client | Four future/past event records require confirmation; two ticket links use `tickets.example.com` and two are empty. |
-| Radio pack | Waiting for client | Three Google Drive URLs are placeholders and no downloadable radio assets are stored locally. Supply final clean-only broadcast assets. |
-| Streaming links | Waiting for client | Most release URLs use human-readable placeholder slugs. The Oxygen Tank URLs use opaque IDs but were not externally approved during recovery. |
-| Oxygen Tank artwork | Waiting for client | `data/releases.json` references missing `assets/images/releases/oxygen-tank.jpg`; the site currently shows its built-in fallback. |
-| Photography approval | Unverifiable | Artist and gallery images exist, but final approval and usage rights are not recorded. |
-| Brand-partnership content | Waiting for client | No approved partnership section or copy exists. |
-| Social links | Unverifiable | Instagram, YouTube, Spotify, and Apple Music profile URLs exist but ownership/finality is not documented. |
-| Audience statistics | Unverifiable | Listener, stream, follower, engagement, and activity values are static JSON data, not live analytics. |
-| Analytics | Technically incomplete | Chart.js visualises static data; no production analytics property or tracking integration is configured. |
-| Privacy and consent | Technically incomplete | No privacy page, cookie notice, or consent implementation exists. |
-| Open Graph metadata | Technically incomplete | Page descriptions exist, but Open Graph and social-sharing configuration is absent. |
-| Favicon | Technically incomplete | No approved favicon file or explicit favicon reference exists. |
-| Cake N Tea | Out of scope | No current repository evidence includes it in this website scope. |
+No analytics or tracking has been added. No permanent canonical domain is configured because the final public domain is not documented. Open Graph and Twitter images remain root-relative until that domain is approved; their absolute public URLs must be finalized before Production launch.
 
-## Placeholder report
+## Removed prototype content
 
-- `data/events.json`
-  - `https://tickets.example.com/zone6-live`
-  - `https://tickets.example.com/arts-fest`
-  - Two empty `ticketUrl` values
-  - All event dates, venues, and ticket availability require client confirmation
-- `data/radio.json`
-  - `https://drive.google.com/drive/folders/kamo-g-epk`
-  - `https://drive.google.com/file/d/kamo-g-bio`
-  - `https://drive.google.com/drive/folders/kamo-g-audio`
-- `data/releases.json` and `pages/music.html`
-  - Human-readable Spotify, Apple Music, YouTube, and SoundCloud placeholder paths for most releases
-  - Missing `assets/images/releases/oxygen-tank.jpg`
-- `pages/media.html`
-  - Two visual video placeholders without final embeds or approved URLs
-- `pages/bookings.html`
-  - Booking form remains a contact-email placeholder; no Typeform or scheduling integration is active
-- No `TODO` or `FIXME` markers were found in ordinary project source.
+The public site no longer contains:
 
-Do not replace these values until verified final content is supplied.
+- fabricated listeners, streams, followers, engagement rates, growth percentages, activity, playlist additions, or chart history
+- Chart.js or generated analytics charts
+- fictional releases, artwork, collaborations, stream counts, dates, or track counts
+- sample shows, venues, ticket links, and “upcoming” event claims
+- fake Spotify slugs, video IDs, Google Drive links, or download inventories
+- invented gallery/video captions, worldwide/major-stage/editorial-playlist/award claims
+- copy claiming that OXYGEN TANK is upcoming
 
-## Netlify status
+Obsolete `data/dashboard.json`, `data/events.json`, fictional release/gallery images, and verification screenshots were removed from the feature branch.
 
-- Known public URL: `https://helpful-mermaid-92162b.netlify.app`
-- Repository configuration: five status-200 rewrites in `netlify.toml`
-- Build command: none
-- Publish directory: repository root (`.`)
-- Expected production branch: `main`
-- Site ID: Unverifiable
-- Team/account owner: Unverifiable
-- Linked Git repository: Unverifiable in Netlify
-- Current production deploy and Git commit: Unverifiable
-- Custom domains: Unverifiable
-- Environment-variable names: Unverifiable
-- Dashboard rollback availability: Unverifiable
+## Client assets and radio pack
 
-The available Netlify dashboard session was unauthenticated. No site was linked, deployed, saved, or reconfigured during recovery.
+The detailed source, derivative, metadata, checksum, and publication record is in `CLIENT_ASSET_MANIFEST.md`. The downloadable pack record and ZIP verification are in `RADIO_PACK_MANIFEST.md`.
 
-## Account and credential ownership transfers
+Current public pack:
 
-Transfer or confirm ownership for these systems without placing credentials in Git:
+- Kamo. G — Official Artist Portrait (original JPEG)
+- Kamo. G — Press Portrait (original JPEG)
+- Kamo. G Radio Pack — Approved Photography (verified ZIP containing those two files)
 
-- GitHub repository administration
-- Netlify site and team
-- Domain registrar and DNS provider
-- Booking mailbox
-- Client-owned Cal.com account, if scheduling remains in scope
-- Analytics and search-console properties
-- Radio/EPK file storage
-- Instagram, YouTube, Spotify for Artists, Apple Music for Artists, and other approved profiles
+Two supplied M4A recordings are withheld. Their measured technical metadata is recorded, but their titles, ownership, intended use, and clean/broadcast status are unconfirmed. No conversion was made and no audio is exposed publicly.
+
+The public original JPEG downloads retain EXIF/IPTC/XMP/Photoshop profiles and embedded thumbnails. A targeted metadata review reported no values in the checked GPS, email, artist/creator, copyright, or camera-serial fields; it was not an assertion that every embedded field is empty. The originals were not altered or stripped.
+
+## Booking status
+
+- Confirmed public email fallback: `kgnon6@gmail.com`
+- Kamo-specific Cal.com URL: **pending client supply/confirmation**
+- Cal.com owner: **not yet documented**
+- Inline embed: not implemented
+- External calendar link: intentionally inactive while `calComUrl` is empty
+- Fallback: active as `mailto:kgnon6@gmail.com` on the booking page; shared booking actions route to that page
+
+No DB Reply, project-review, personal, studio-administration, or fabricated calendar URL is present.
+
+## Deployment ownership and boundaries
+
+- Production branch is expected to remain `main`.
+- Netlify build command: none; publish directory: repository root.
+- A Deploy Preview may be created only from the delivery branch after validation and repository linkage checks.
+- The final domain, DNS owner, Netlify team/site owner, and Production launch approver still require confirmation before launch.
+- `/portal/kamo`, DB Assistant, DB Reply, Cloudflare, DNS, and Production Netlify are outside this repository handover and must remain untouched.
+
+## Remaining client decisions
+
+Only these concrete inputs remain:
+
+1. Supply and confirm the public Kamo-owned Cal.com event URL, if an external booking-calendar link is wanted.
+2. Identify both supplied M4A recordings and provide written confirmation of ownership, intended public use, and clean/broadcast status before any audio is published.
+3. Supply approved biography/press documents, cover artwork, clean audio masters, or additional photography only if they should be added to the public pack.
+4. Confirm the final public domain, Netlify ownership, DNS ownership, and Production launch approver.
+5. Confirm whether analytics is required and, if so, provide the owned property and consent/privacy requirements.
 
 ## Launch checklist
 
-- [ ] Approve final domain and confirm registrar/DNS ownership
-- [ ] Confirm booking email and client mailbox access
-- [ ] Decide whether client-owned Cal.com scheduling is required
-- [ ] Replace and verify all placeholder streaming links
-- [ ] Confirm tour dates, venues, ticket links, and publication status
-- [ ] Supply approved Oxygen Tank artwork
-- [ ] Supply and test final clean radio-pack downloads
-- [ ] Approve photography and usage rights
-- [ ] Supply or remove brand-partnership content from scope
-- [ ] Approve displayed biography, statistics, and activity claims
-- [ ] Add approved favicon and social-sharing metadata
-- [ ] Decide and implement analytics, privacy, and consent requirements
-- [ ] Verify Netlify ownership, Git linkage, production branch, and rollback access
-- [ ] Run final desktop/mobile, route, link, asset, and download checks
+- [x] Remove fabricated and placeholder public content
+- [x] Verify official artist destinations and featured album
+- [x] Import and optimize the two supplied photographs
+- [x] Publish working individual photo downloads and an integrity-tested ZIP
+- [x] Preserve an honest booking-email fallback
+- [x] Keep unconfirmed audio private
+- [ ] Validate the exact final feature-branch tree locally
+- [ ] Record and approve the final Kamo-owned Cal.com URL, if required
+- [ ] Confirm final domain and account ownership
 - [ ] Obtain written client launch approval
-- [ ] Deploy through the verified production owner; do not change DNS until the deploy is approved
+- [ ] Merge and deploy Production through the verified owner (outside this handover task)
 
-## Rollback approach
-
-1. Keep `main` unchanged until the recovery branch is reviewed and approved.
-2. Use a normal Git revert for any merged change that must be undone; do not force-push production history.
-3. After Netlify ownership is verified, record the last approved deploy ID before launch.
-4. If a production issue occurs, restore the last approved Netlify deploy and then revert the corresponding Git change.
-5. Treat DNS rollback as a separately approved owner action.
-
-## Post-launch support
-
-- Monitor route, asset, booking-email, and download availability
-- Verify analytics and search-console collection after consent requirements are met
-- Review streaming, tour, press, and partnership content on an agreed schedule
-- Maintain current radio assets and approved photography
-- Confirm domain renewal, DNS, GitHub, Netlify, and account ownership remain with the client
-- Keep a documented last-known-good deploy and test rollback access periodically
-
-## Explicit scope boundary
-
-`/portal/kamo` remains inside shared DB infrastructure. It was not read, copied, edited, built, committed, deployed, or included in this repository recovery. Portal migration is a separate future task.
+Use normal review and revert workflows; do not rewrite shared history or force-push. This feature branch is a release candidate, not authorization to merge or publish Production.

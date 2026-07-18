@@ -1,40 +1,44 @@
-# Kamo G — Son of Moses Website
+# Kamo. G — Official Artist Website
 
-Official static website and artist platform for Kamo G's **Son of Moses** experience. The repository contains the public website only; the separate `/portal/kamo` client portal is not part of this codebase.
+A fast, static public website for South African artist **Kamo. G**, covering verified music, approved photography, booking enquiries, and public radio/press downloads.
 
-## Stack
+## Architecture
 
-- Static HTML5
-- CSS
-- Vanilla JavaScript
-- JSON content files
-- Chart.js loaded from a CDN for dashboard charts
-- Netlify redirects for clean public routes
+- Static HTML5, CSS, and vanilla JavaScript
+- JSON content in `data/`
+- Shared HTML fragments in `components/`
+- Netlify clean-route rewrites in `netlify.toml`
+- No package install, build step, framework, CMS, API, database, tracking, or analytics
 
-There is no package manifest, dependency installation step, compile step, or generated production build.
+## Public routes
 
-## Structure
+| Route | Purpose |
+|---|---|
+| `/` | Artist HQ and official destinations |
+| `/music` | Verified featured release and Spotify catalogue link |
+| `/bookings` | Booking enquiry journey and email fallback |
+| `/media` | Approved photography and official media destinations |
+| `/radio` | Verified public press and radio-pack downloads |
+| `/about` | Approved biography and Son of Moses narrative |
 
-```text
-assets/images/   Artist, release, gallery, and brand imagery
-components/      Shared navigation, sidebar, and footer fragments
-css/             Global, dashboard, page, and responsive styles
-data/            Artist, release, event, gallery, radio, and dashboard content
-js/              Rendering, interaction, and utility JavaScript
-pages/           Static page documents served through Netlify redirects
-index.html       Homepage / artist dashboard
-netlify.toml     Clean-route deployment configuration
-```
+## Content configuration
 
-## Local setup
+Frequently changed public content is centralized in:
 
-No installation is required. For a production-like local preview, use an existing Netlify CLI installation from the repository root:
+- `data/artist.json` — public name, biography, contacts, social destinations, images, and optional Cal.com URL
+- `data/releases.json` — positively verified releases only
+- `data/gallery.json` — approved public photography only
+- `data/radio.json` — physically available public downloads and factual metadata
+
+`calComUrl` is deliberately empty until Kamo supplies a confirmed Kamo-owned public event URL. When configured, it enables an external booking-calendar link; no inline embed is implemented. The current functional fallback is `mailto:kgnon6@gmail.com`. No personal, studio-administration, DB Reply, or fabricated Cal.com URL is present.
+
+## Local preview
+
+No installation is required. From the repository root, use an existing Netlify CLI installation so the clean routes behave like the hosted site:
 
 ```sh
-netlify dev
+netlify dev --offline --dir . --port 8888 --no-open --skip-gitignore
 ```
-
-This is preferred because the site depends on the clean-route rewrites in `netlify.toml`. A basic static server can display the homepage, but it does not emulate `/music`, `/bookings`, `/media`, `/radio`, and `/about` without equivalent rewrite rules.
 
 Useful source checks:
 
@@ -45,13 +49,20 @@ node --check js/utils.js
 git diff --check
 ```
 
-## Deployment
+## Downloads
 
-- Hosting platform: Netlify
+The public pack is under `assets/downloads/kamo-g-radio-pack/`. It currently contains the two supplied original press portraits and an integrity-tested ZIP. Supplied audio is not published because its titles, ownership, and clean/broadcast status are not documented.
+
+See `CLIENT_ASSET_MANIFEST.md`, `RADIO_PACK_MANIFEST.md`, and `HANDOVER.md` for checksums, conversion details, withheld assets, and remaining client decisions.
+
+## Deployment boundary
+
+- Hosting: Netlify
 - Production branch: `main`
 - Build command: none
 - Publish directory: repository root (`.`)
-- Repository-side deployment settings: `netlify.toml`
-- Account-side ownership, domains, environment settings, and deploy history: Netlify dashboard
+- Feature delivery branch: `feature/kamo-client-ready-20260718`
 
-Do not deploy until the client-dependent items in `HANDOVER.md` are resolved and the production owner has approved the launch.
+Use the connected Git workflow for a Deploy Preview. Do not merge, promote to Production, alter DNS, or add a permanent canonical URL until ownership and the final public domain are confirmed.
+
+Open Graph and Twitter images intentionally use root-relative approved assets for now. Convert them to absolute public URLs only after the final domain is approved; do not use a Deploy Preview hostname as the permanent value.

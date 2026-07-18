@@ -161,6 +161,29 @@ ul, ol {
   top: 0;
 }
 
+.static-nav {
+  min-height: var(--navbar-height);
+  padding: var(--space-sm) var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  background: var(--black);
+  border-bottom: 1px solid var(--border);
+}
+
+.static-nav__brand { color: var(--white); font-family: var(--font-heading); font-weight: 700; }
+.static-nav__links { display: flex; flex-wrap: wrap; gap: var(--space-md); }
+.static-nav__links a { color: var(--muted-light); font-size: 13px; }
+.static-nav__links a:hover { color: var(--gold); }
+
+@media (max-width: 576px) {
+  .static-nav { align-items: flex-start; flex-direction: column; }
+  .static-nav__links { gap: var(--space-sm) var(--space-md); }
+}
+
+#sidebar:empty + .app-main { margin-left: 0; }
+
 /* Focus styles */
 :focus-visible {
   outline: 2px solid var(--gold);

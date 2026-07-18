@@ -43,7 +43,7 @@
     "format": "ZIP",
     "sizeBytes": 264750,
     "status": "Integrity verified",
-    "description": "Contains the two approved original press portraits. No audio or private metadata is included.",
+    "description": "Contains the two approved original press portraits. No audio, private correspondence or transfer sidecar files are included.",
     "path": "/assets/downloads/kamo-g-radio-pack/kamo-g-radio-pack-2026-07-18.zip",
     "sha256": "4739b5b83ebcbdcd010d245be315e7b47d81471557c92166d1a555d52a3fd618"
   }
