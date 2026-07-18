@@ -1,12 +1,8 @@
-<nav class="navbar" role="navigation" aria-label="Main navigation">
+<nav class="navbar" aria-label="Main navigation">
   <div class="navbar__inner">
     <a href="/" class="navbar__brand" data-artist-name>Kamo. G</a>
 
-    <button class="navbar__toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-      <svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    </button>
-
-    <div class="navbar__links">
+    <div class="navbar__links" id="site-navigation">
       <a href="/" class="navbar__link">Home</a>
       <a href="/music" class="navbar__link">Music</a>
       <a href="/bookings" class="navbar__link">Bookings</a>
@@ -16,7 +12,11 @@
     </div>
 
     <div class="navbar__actions">
-      <a href="/bookings" class="btn btn--gold btn--sm">Book Kamo. G</a>
+      <a href="/bookings" class="btn btn--gold btn--sm">Book Kamo G</a>
     </div>
+
+    <button type="button" class="navbar__toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="site-navigation">
+      <svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
   </div>
 </nav>

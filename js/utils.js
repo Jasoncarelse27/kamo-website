@@ -38,13 +38,15 @@ function getCurrentPage() {
 
 function setActiveNavLink() {
   var currentPage = getCurrentPage();
-  document.querySelectorAll('.navbar__link, .sidebar__nav-item').forEach(function(link) {
+  document.querySelectorAll('.navbar__link').forEach(function(link) {
     var href = link.getAttribute('href');
     if (!href) return;
     var linkPage = href === '/' ? 'home' : href.split('/').pop().replace(/\.html$/, '');
-    link.classList.remove('navbar__link--active', 'sidebar__nav-item--active');
+    link.classList.remove('navbar__link--active');
+    link.removeAttribute('aria-current');
     if (linkPage === currentPage) {
-      link.classList.add(link.classList.contains('navbar__link') ? 'navbar__link--active' : 'sidebar__nav-item--active');
+      link.classList.add('navbar__link--active');
+      link.setAttribute('aria-current', 'page');
     }
   });
 }
@@ -54,15 +56,25 @@ function initMobileNav() {
   var links = document.querySelector('.navbar__links');
   if (!toggle || !links || toggle.dataset.ready === 'true') return;
   toggle.dataset.ready = 'true';
-  toggle.addEventListener('click', function() {
-    var open = links.classList.toggle('navbar__links--open');
+
+  function setOpen(open) {
+    links.classList.toggle('navbar__links--open', open);
+    document.body.classList.toggle('nav-open', open);
     toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+  }
+
+  toggle.addEventListener('click', function() {
+    setOpen(toggle.getAttribute('aria-expanded') !== 'true');
   });
   links.querySelectorAll('a').forEach(function(link) {
-    link.addEventListener('click', function() {
-      links.classList.remove('navbar__links--open');
-      toggle.setAttribute('aria-expanded', 'false');
-    });
+    link.addEventListener('click', function() { setOpen(false); });
+  });
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+      setOpen(false);
+      toggle.focus();
+    }
   });
 }
 

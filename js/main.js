@@ -1,4 +1,4 @@
-/* Kamo. G website rendering and interactions */
+/* Kamo. G website rendering and progressive interactions */
 
 (function() {
   'use strict';
@@ -8,20 +8,20 @@
   document.addEventListener('DOMContentLoaded', initSite);
 
   async function initSite() {
-    artistConfig = await KamoUtils.fetchData('/data/artist.json');
-    if (!artistConfig) return;
-
-    window.KamoSite = { hydrateSiteConfig: hydrateSiteConfig };
-    hydrateSiteConfig(document);
     KamoUtils.initMobileNav();
     KamoUtils.setActiveNavLink();
+    initAudioPreviews(document);
 
     var page = KamoUtils.getCurrentPage();
-    if (page === 'home') await loadHome();
-    if (page === 'music') await loadMusic();
     if (page === 'media') await loadMedia();
+
+    artistConfig = await KamoUtils.fetchData('/data/artist.json');
+    window.KamoSite = { hydrateSiteConfig: hydrateSiteConfig };
+    if (!artistConfig) return;
+
+    hydrateSiteConfig(document);
+    if (page === 'music') await loadMusic();
     if (page === 'radio') await loadRadio();
-    if (page === 'about') loadAbout();
     if (page === 'bookings') loadBookings();
   }
 
@@ -53,134 +53,78 @@
     });
   }
 
-  async function loadHome() {
-    var releases = await KamoUtils.fetchData('/data/releases.json') || [];
-    renderHomeHero();
-    renderArtistHeadquarters(releases);
-    renderReleaseCards(document.getElementById('recent-releases'), releases);
-  }
-
-  function renderHomeHero() {
-    var container = document.getElementById('dashboard-hero');
-    if (!container) return;
-    var image = artistConfig.images.portraitJpeg;
-    container.innerHTML = (image ? '<picture class="dashboard-hero__portrait"><source srcset="' + artistConfig.images.portraitWebp + '" type="image/webp"><img src="' + image + '" alt="Kamo. G official artist portrait" class="dashboard-hero__avatar"></picture>' : '') +
-      '<div class="dashboard-hero__info">' +
-        '<div class="dashboard-hero__tagline-ecosystem">Official artist website</div>' +
-        '<h1 class="dashboard-hero__name">' + artistConfig.name + '</h1>' +
-        '<p class="dashboard-hero__tagline">' + artistConfig.tagline + '</p>' +
-        '<div class="dashboard-hero__actions">' +
-          '<a href="/music" class="btn btn--gold">Listen</a>' +
-          '<a href="/bookings" class="btn btn--outline">Book Kamo. G</a>' +
-        '</div>' +
-      '</div>';
-  }
-
-  function renderArtistHeadquarters(releases) {
-    var container = document.getElementById('artist-hq');
-    if (!container) return;
-    var featured = releases.find(function(release) { return release.id === artistConfig.featuredReleaseId; });
-    var cards = [];
-    if (featured) cards.push({ icon: 'music', label: 'Verified release', value: featured.title + ' • ' + featured.year, href: featured.spotifyUrl, external: true });
-    if (artistConfig.socials.spotify) cards.push({ icon: 'play', label: 'Listen on Spotify', value: 'Official artist profile', href: artistConfig.socials.spotify, external: true });
-    if (artistConfig.socials.youtube) cards.push({ icon: 'play', label: 'Watch on YouTube', value: 'Official channel', href: artistConfig.socials.youtube, external: true });
-    cards.push({ icon: 'calendar', label: 'Book Kamo. G', value: artistConfig.calComUrl ? 'Choose a time' : 'Email booking enquiries', href: '/bookings' });
-    cards.push({ icon: 'download', label: 'Radio pack', value: 'Approved audio and press downloads', href: '/radio' });
-
-    container.innerHTML = cards.map(function(card) {
-      return '<a class="quick-action" href="' + card.href + '"' + (card.external ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' +
-        '<div class="quick-action__icon">' + KamoUtils.iconSVG(card.icon, 24) + '</div>' +
-        '<div class="quick-action__label">' + card.label + '</div>' +
-        '<div class="quick-action__value">' + card.value + '</div>' +
-      '</a>';
-    }).join('');
-  }
-
   async function loadMusic() {
     var releases = await KamoUtils.fetchData('/data/releases.json') || [];
     var featured = releases.find(function(release) { return release.id === artistConfig.featuredReleaseId; }) || releases[0];
     var spotlight = document.getElementById('featured-release');
-    if (spotlight) {
-      spotlight.innerHTML = featured ?
-        '<div class="ep-spotlight__info">' +
-          '<span class="ep-spotlight__badge">Verified release</span>' +
-          '<h2 class="ep-spotlight__title">' + featured.title + '</h2>' +
-          '<p>' + featured.description + '</p>' +
-          '<p class="release-facts">' + featured.type + ' • ' + featured.year + '</p>' +
-          '<a href="' + featured.spotifyUrl + '" class="btn btn--gold" target="_blank" rel="noopener noreferrer">Open in Spotify</a>' +
-        '</div>' +
-        '<iframe class="spotify-embed" src="' + featured.spotifyEmbedUrl + '" title="Listen to ' + featured.title + ' on Spotify" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>' :
-        emptyState('No release has been verified for publication yet.');
-    }
-    renderReleaseCards(document.getElementById('music-grid'), releases);
-  }
-
-  function renderReleaseCards(container, releases) {
-    if (!container) return;
-    if (!releases.length) {
-      container.innerHTML = emptyState('Verified releases will appear here.');
-      return;
-    }
-    container.innerHTML = releases.map(function(release) {
-      return '<article class="track-card">' +
-        '<div class="release-card__art">' + KamoUtils.iconSVG('music', 38) + '</div>' +
-        '<div class="track-card__body">' +
-          '<h3 class="track-card__title">' + release.title + '</h3>' +
-          '<div class="track-card__meta"><span class="track-card__badge">' + release.type + '</span><span class="track-card__year">' + release.year + '</span></div>' +
-          '<p class="track-card__description">' + release.description + '</p>' +
-          '<a href="' + release.spotifyUrl + '" class="btn btn--gold btn--sm" target="_blank" rel="noopener noreferrer">Spotify</a>' +
-        '</div>' +
-      '</article>';
-    }).join('');
+    if (!spotlight || !featured) return;
+    spotlight.innerHTML = '<div class="ep-spotlight__info">' +
+      '<span class="ep-spotlight__badge">Current release</span>' +
+      '<h2 class="ep-spotlight__title">' + featured.title + '</h2>' +
+      '<p>' + featured.description + '</p>' +
+      '<p class="release-facts">' + featured.type + ' • ' + featured.year + '</p>' +
+      '<a href="' + featured.spotifyUrl + '" class="btn btn--gold" target="_blank" rel="noopener noreferrer">Listen on Spotify</a>' +
+      '</div><iframe class="spotify-embed" src="' + featured.spotifyEmbedUrl + '" width="100%" height="352" title="Listen to ' + featured.title + ' by Kamo. G on Spotify" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>';
   }
 
   async function loadMedia() {
-    var gallery = await KamoUtils.fetchData('/data/gallery.json') || [];
-    var container = document.getElementById('media-gallery');
-    if (!container) return;
-    if (!gallery.length) {
-      container.innerHTML = emptyState('Approved photographs will appear here.');
+    var gallery = await KamoUtils.fetchData('/data/gallery.json');
+    if (!gallery || !gallery.length) {
+      initLightbox(defaultGallery());
       return;
     }
+    var container = document.getElementById('media-gallery');
+    if (!container) return;
     container.innerHTML = gallery.map(function(item, index) {
-      return '<button class="media-gallery__item" type="button" data-lightbox-index="' + index + '" aria-label="Open ' + item.caption + '">' +
-        '<picture><source srcset="' + item.webp + '" type="image/webp"><img src="' + item.jpeg + '" alt="' + item.alt + '" loading="lazy"></picture>' +
-        '<span class="media-gallery__item-overlay"><span class="media-gallery__item-caption">' + item.caption + '</span></span>' +
-      '</button>';
+      return '<article class="media-gallery__entry"><button class="media-gallery__item" type="button" data-lightbox-index="' + index + '" aria-label="Open ' + item.caption + '">' +
+        '<picture><source srcset="' + item.webp + '" type="image/webp"><img src="' + item.jpeg + '" width="1080" height="1350" alt="' + item.alt + '" loading="lazy" decoding="async"></picture>' +
+        '<span class="media-gallery__item-overlay"><span class="media-gallery__item-caption">' + item.caption + '</span></span></button>' +
+        '<a class="media-gallery__download" href="' + item.download + '" download>Download original</a></article>';
     }).join('');
     initLightbox(gallery);
+  }
+
+  function defaultGallery() {
+    return [
+      { jpeg: '/assets/images/press/kamo-g-official-artist-portrait.jpg', alt: 'Portrait of Kamo. G wearing a black bucket hat and jacket', caption: 'Kamo. G — Official Artist Portrait' },
+      { jpeg: '/assets/images/press/kamo-g-press-portrait.jpg', alt: 'Kamo. G in a black bucket hat and jacket against a green background', caption: 'Kamo. G — Press Portrait' }
+    ];
   }
 
   function initLightbox(gallery) {
     var dialog = document.getElementById('media-lightbox');
     var image = dialog && dialog.querySelector('img');
     var caption = dialog && dialog.querySelector('[data-lightbox-caption]');
-    if (!dialog || !image || !caption) return;
+    var closeButton = dialog && dialog.querySelector('[data-lightbox-close]');
+    if (!dialog || !image || !caption || !closeButton || dialog.dataset.ready === 'true') return;
+    dialog.dataset.ready = 'true';
+    var returnFocus = null;
+
     document.querySelectorAll('[data-lightbox-index]').forEach(function(button) {
       button.addEventListener('click', function() {
         var item = gallery[Number(button.dataset.lightboxIndex)];
+        if (!item) return;
+        returnFocus = button;
         image.src = item.jpeg;
         image.alt = item.alt;
         caption.textContent = item.caption;
         dialog.showModal();
+        closeButton.focus();
       });
     });
-    dialog.querySelector('[data-lightbox-close]').addEventListener('click', function() { dialog.close(); });
+    closeButton.addEventListener('click', function() { dialog.close(); });
     dialog.addEventListener('click', function(event) { if (event.target === dialog) dialog.close(); });
+    dialog.addEventListener('close', function() {
+      if (returnFocus && document.contains(returnFocus)) returnFocus.focus();
+    });
   }
 
   function loadBookings() {
     var container = document.getElementById('booking-main');
-    if (!container) return;
-    var email = artistConfig.bookingEmail;
-    if (artistConfig.calComUrl) {
-      container.innerHTML = '<h2>Public booking calendar</h2><p>Use the approved public scheduling link, or email the booking team.</p>' +
-        '<div class="booking-actions"><a class="btn btn--gold" href="' + artistConfig.calComUrl + '" target="_blank" rel="noopener noreferrer">Open booking calendar</a>' + emailButton(email) + '</div>';
-    } else {
-      container.innerHTML = '<div class="booking-fallback">' + KamoUtils.iconSVG('calendar', 42) +
-        '<h2>Booking enquiries</h2><p>Email the booking team with your event date, location and enquiry details. A public scheduling calendar will be added after its client-owned URL is confirmed.</p>' +
-        (email ? emailButton(email) : '<p class="status-note">A public booking contact is awaiting confirmation.</p>') + '</div>';
-    }
+    if (!container || !artistConfig.bookingEmail) return;
+    container.innerHTML = '<div class="booking-fallback"><h2>Booking enquiries</h2>' +
+      '<p>Email the booking team directly. No form, public calendar or availability claim is used on this site.</p>' +
+      emailButton(artistConfig.bookingEmail) + '</div>';
   }
 
   async function loadRadio() {
@@ -189,7 +133,6 @@
     if (!container || !radio) return;
     var groups = radio.groups || [];
     var html = '<h2 class="radio-main__title">' + radio.title + '</h2><p class="radio-main__description">' + radio.description + '</p>';
-    if (!groups.length) html += emptyState('Approved public downloads are being prepared.');
     groups.forEach(function(group) {
       html += '<section class="download-group"><h3>' + group.title + '</h3>';
       if (!group.items.length) html += '<p class="status-note">' + group.emptyMessage + '</p>';
@@ -199,33 +142,33 @@
     if (radio.completePack) html += '<section class="download-group"><h3>Complete Pack</h3><div class="download-grid">' + downloadCard(radio.completePack) + '</div></section>';
     if (radio.lastUpdated) html += '<p class="radio-updated">Last updated: ' + radio.lastUpdated + '</p>';
     container.innerHTML = html;
+    initAudioPreviews(container);
   }
 
   function downloadCard(item) {
     var details = [item.format, KamoUtils.formatFileSize(item.sizeBytes), item.durationSeconds ? KamoUtils.formatDuration(item.durationSeconds) : '', item.dimensions || ''].filter(Boolean).join(' • ');
-    return '<article class="download-card"><div class="download-card__icon">' + KamoUtils.iconSVG('download', 22) + '</div>' +
+    var isAudio = item.format === 'M4A';
+    var audio = isAudio ? '<audio class="download-card__audio" controls preload="metadata" data-audio-preview aria-label="Play ' + item.title + '"><source src="' + item.path + '" type="audio/mp4">Your browser does not support audio playback. <a href="' + item.path + '">Download this voice note</a>.</audio>' : '';
+    return '<article class="download-card' + (isAudio ? ' download-card--audio' : '') + '"><div class="download-card__icon" aria-hidden="true">' + KamoUtils.iconSVG(isAudio ? 'play' : 'download', 22) + '</div>' +
       '<div class="download-card__body"><h4>' + item.title + '</h4><p class="download-card__meta">' + details + '</p>' +
       (item.status ? '<span class="download-card__status">' + item.status + '</span>' : '') +
-      (item.description ? '<p>' + item.description + '</p>' : '') + '</div>' +
+      (item.description ? '<p>' + item.description + '</p>' : '') + audio + '</div>' +
       '<a class="btn btn--gold btn--sm" href="' + item.path + '" download>Download</a></article>';
   }
 
-  function loadAbout() {
-    var hero = document.getElementById('about-hero');
-    if (hero && artistConfig.images.portraitJpeg) {
-      hero.innerHTML = '<picture><source srcset="' + artistConfig.images.portraitWebp + '" type="image/webp"><img src="' + artistConfig.images.portraitJpeg + '" alt="Kamo. G official artist portrait" class="about-hero__image"></picture><div class="about-hero__overlay"><h1 class="about-hero__title">' + artistConfig.name + '</h1></div>';
-    }
-    var content = document.getElementById('about-content');
-    if (content) content.innerHTML = '<div class="about-content__text"><h2>The story</h2>' + artistConfig.bio.map(function(paragraph) { return '<p>' + paragraph + '</p>'; }).join('') + '</div>';
-    var timeline = document.getElementById('about-timeline');
-    if (timeline) timeline.innerHTML = artistConfig.timeline.map(function(item) { return '<div class="timeline-item"><div class="timeline-item__label">' + item.label + '</div><p>' + item.text + '</p></div>'; }).join('');
+  function initAudioPreviews(root) {
+    root.querySelectorAll('[data-audio-preview]').forEach(function(player) {
+      if (player.dataset.ready === 'true') return;
+      player.dataset.ready = 'true';
+      player.addEventListener('play', function() {
+        document.querySelectorAll('[data-audio-preview]').forEach(function(otherPlayer) {
+          if (otherPlayer !== player && !otherPlayer.paused) otherPlayer.pause();
+        });
+      });
+    });
   }
 
   function emailButton(email) {
-    return '<a class="btn btn--gold" href="mailto:' + email + '">' + KamoUtils.iconSVG('mail', 16) + ' Email booking team</a>';
-  }
-
-  function emptyState(message) {
-    return '<div class="empty-state">' + KamoUtils.iconSVG('info', 24) + '<p>' + message + '</p></div>';
+    return '<a class="btn btn--gold" href="mailto:' + email + '">' + KamoUtils.iconSVG('mail', 16) + ' ' + email + '</a>';
   }
 })();

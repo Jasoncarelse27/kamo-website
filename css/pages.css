@@ -1,6 +1,6 @@
 /* ============================================================
-   DB STUDIO ARTIST ECOSYSTEM PLATFORM — PAGE-SPECIFIC STYLES
-   Kamo G · Version 1
+   KAMO. G ARTIST WEBSITE — PAGE-SPECIFIC STYLES
+   Campaign refinement
    ============================================================ */
 
 /* ============================================================
@@ -806,3 +806,86 @@
     text-align: center;
   }
 }
+
+/* Refined page presentation */
+.page-hero {
+  padding: clamp(56px, 8vw, 96px) 0;
+  margin-bottom: clamp(40px, 6vw, 72px);
+}
+
+.page-hero__title { font-size: clamp(38px, 6vw, 72px); letter-spacing: -2px; }
+.page-hero__subtitle { max-width: 720px; color: var(--muted-light); font-size: 16px; }
+
+.ep-spotlight {
+  border-width: 1px;
+  border-color: var(--gold-dark);
+  background: linear-gradient(135deg, #17130a, var(--dark) 48%);
+}
+
+.ep-spotlight__title { font-size: clamp(30px, 4vw, 48px); }
+.spotify-embed { max-height: 352px; }
+
+.bookings-form,
+.bookings-sidebar__card,
+.radio-main,
+.radio-sidebar__card,
+.platform-card {
+  background: var(--dark);
+  border-color: var(--border);
+}
+
+.booking-fallback { min-height: 330px; }
+.booking-fallback .btn { margin-top: var(--space-lg); }
+
+.media-gallery__entry { display: grid; gap: 10px; }
+.media-gallery__item { width: 100%; aspect-ratio: 4 / 5; }
+.media-gallery__download {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.media-gallery__download:hover { border-color: var(--gold-dark); }
+
+.download-card--audio { align-items: start; }
+.download-card__audio {
+  display: block;
+  width: min(100%, 560px);
+  height: 44px;
+  margin-top: var(--space-md);
+  color-scheme: dark;
+}
+
+.about-hero { height: min(68vh, 680px); }
+.about-hero__image { object-position: center 32%; }
+.about-hero__eyebrow,
+.about-release__label {
+  display: block;
+  margin-bottom: var(--space-sm);
+  color: var(--gold-light);
+  font-family: var(--font-heading);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.about-hero__title { font-size: clamp(38px, 6vw, 72px); }
+.about-content { grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.75fr); align-items: start; }
+.about-content__text h2 { margin-bottom: var(--space-lg); color: var(--white); }
+.about-content__text p + p { margin-top: var(--space-md); }
+.about-release { padding: var(--space-xl); background: #17130a; border: 1px solid var(--gold-dark); border-radius: var(--radius-lg); }
+.about-release h2 { margin-bottom: var(--space-md); font-size: 28px; }
+.about-release p { color: var(--muted-light); }
+.about-release .btn { margin-top: var(--space-lg); }
+.about-destinations { display: flex; margin-bottom: var(--space-xl); padding: var(--space-lg) 0; align-items: center; justify-content: space-between; gap: var(--space-lg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.about-destinations__links { display: flex; flex-wrap: wrap; gap: var(--space-lg); }
+.about-destinations__links a { display: inline-flex; min-height: 44px; align-items: center; font-weight: 700; }

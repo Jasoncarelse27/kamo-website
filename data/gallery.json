@@ -3,6 +3,7 @@
     "id": "official-artist-portrait",
     "webp": "/assets/images/press/kamo-g-official-artist-portrait.webp",
     "jpeg": "/assets/images/press/kamo-g-official-artist-portrait.jpg",
+    "download": "/assets/downloads/kamo-g-radio-pack/photos/kamo-g-official-artist-portrait-original.jpg",
     "alt": "Portrait of Kamo. G wearing a black bucket hat and jacket",
     "caption": "Kamo. G — Official Artist Portrait"
   },
@@ -10,6 +11,7 @@
     "id": "press-portrait",
     "webp": "/assets/images/press/kamo-g-press-portrait.webp",
     "jpeg": "/assets/images/press/kamo-g-press-portrait.jpg",
+    "download": "/assets/downloads/kamo-g-radio-pack/photos/kamo-g-press-portrait-original.jpg",
     "alt": "Kamo. G in a black bucket hat and jacket against a green background",
     "caption": "Kamo. G — Press Portrait"
   }

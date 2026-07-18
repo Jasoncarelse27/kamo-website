@@ -14,23 +14,23 @@ A fast, static public website for South African artist **Kamo. G**, covering ver
 
 | Route | Purpose |
 |---|---|
-| `/` | Artist HQ and official destinations |
-| `/music` | Verified featured release and Spotify catalogue link |
-| `/bookings` | Booking enquiry journey and email fallback |
+| `/` | OXYGEN TANK campaign hero and compact Latest content |
+| `/music` | Current release, one Spotify embed, and official artist link |
+| `/bookings` | Direct booking email and concise enquiry guidance |
 | `/media` | Approved photography and official media destinations |
-| `/radio` | Verified public press and radio-pack downloads |
-| `/about` | Approved biography and Son of Moses narrative |
+| `/radio` | Native voice-note previews and verified public downloads |
+| `/about` | Concise approved biography, current release, and official links |
 
 ## Content configuration
 
 Frequently changed public content is centralized in:
 
-- `data/artist.json` — public name, biography, contacts, social destinations, images, and optional Cal.com URL
+- `data/artist.json` — public name, biography, contacts, social destinations, and images
 - `data/releases.json` — positively verified releases only
 - `data/gallery.json` — approved public photography only
 - `data/radio.json` — physically available public downloads and factual metadata
 
-`calComUrl` is deliberately empty until Kamo supplies a confirmed Kamo-owned public event URL. When configured, it enables an external booking-calendar link; no inline embed is implemented. The current functional fallback is `mailto:kgnon6@gmail.com`. No personal, studio-administration, DB Reply, or fabricated Cal.com URL is present.
+The current booking journey is the confirmed `mailto:kgnon6@gmail.com` fallback. No scheduling link or form is exposed without a confirmed Kamo-owned public destination.
 
 ## Local preview
 
@@ -51,7 +51,7 @@ git diff --check
 
 ## Downloads
 
-The public pack is under `assets/downloads/kamo-g-radio-pack/`. It contains the two supplied original press portraits, the approved clean and explicit radio voice notes in their original M4A format, and an integrity-tested ZIP containing all four files. No audio was transcoded.
+The public pack is under `assets/downloads/kamo-g-radio-pack/`. It contains the two supplied original press portraits, the approved clean and explicit radio voice notes in their original M4A format, and an integrity-tested ZIP containing all four files. The radio route uses native HTML audio controls with metadata-only preload; no audio was transcoded.
 
 See `CLIENT_ASSET_MANIFEST.md`, `RADIO_PACK_MANIFEST.md`, and `HANDOVER.md` for checksums, conversion details, publication decisions, and remaining client inputs.
 

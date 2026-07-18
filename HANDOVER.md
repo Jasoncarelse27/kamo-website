@@ -27,12 +27,13 @@ The biography uses approved project material and restrained factual language. â€
 
 ## Public implementation
 
-- `/` is an Artist HQ with direct actions for Spotify, YouTube, Instagram, bookings, and the radio pack.
-- `/music` contains one positively matched release and Spotifyâ€™s supported album embed, plus a complete-discography link to the official artist page.
-- `/media` contains only the two supplied photographs, an accessible native lightbox, the official YouTube channel, and the supplied Instagram post.
-- `/radio` renders only physically present public files with measured sizes, durations or dimensions, SHA-256 values, and direct downloads.
-- `/bookings` uses the functional `mailto:kgnon6@gmail.com` enquiry fallback. When `data/artist.json` contains an approved Kamo-owned public `calComUrl`, the page exposes an external booking-calendar link. No inline embed is implemented.
-- Metadata, meaningful page titles, approved social-image references, image alternatives, safe external-link attributes, and responsive navigation are present on every route.
+- `/` leads with the single OXYGEN TANK campaign, immediate Spotify and booking actions, and three compact Latest cards for the release, official YouTube channel, and radio pack.
+- `/music` contains one positively matched current release, one Spotify-supported album embed, and a link to the official artist page.
+- `/media` contains only the two supplied photographs, original-file downloads, an accessible native lightbox with focus restoration, the official YouTube channel, and the supplied Instagram post.
+- `/radio` provides native metadata-preloaded previews for the clean and explicit M4As while retaining every verified direct download. A small enhancement pauses the other preview when one begins playing.
+- `/bookings` uses the functional `mailto:kgnon6@gmail.com` enquiry fallback and lists the event details organisers should include. No form, availability claim, response-time promise, or public calendar is exposed.
+- `/about` uses only approved biography material, the current release, verified official destinations, and a booking action.
+- Metadata, meaningful page titles, approved social-image references, image alternatives, safe external-link attributes, responsive navigation, mobile-menu Escape handling, and body scroll control are present across the routes.
 
 No analytics or tracking has been added. No permanent canonical domain is configured because the final public domain is not documented. Open Graph and Twitter images remain root-relative until that domain is approved; their absolute public URLs must be finalized before Production launch.
 
@@ -49,6 +50,23 @@ The public site no longer contains:
 - copy claiming that OXYGEN TANK is upcoming
 
 Obsolete `data/dashboard.json`, `data/events.json`, fictional release/gallery images, and verification screenshots were removed from the feature branch.
+
+## Future verified events
+
+No events section is rendered because there are no approved public dates. If verified dates are supplied later, keep the section absent when there are zero records and use only this small record shape:
+
+```json
+{
+  "date": "YYYY-MM-DD",
+  "city": "Verified city",
+  "venue": "Verified venue",
+  "eventType": "Verified event type",
+  "ticketUrl": null,
+  "enquiryUrl": null
+}
+```
+
+Use either `ticketUrl` or `enquiryUrl` as appropriate, and publish no record until every displayed field and destination has been approved. An empty events framework or placeholder section is not required.
 
 ## Client assets and radio pack
 
@@ -69,10 +87,10 @@ The public original JPEG downloads retain EXIF/IPTC/XMP/Photoshop profiles and e
 ## Booking status
 
 - Confirmed public email fallback: `kgnon6@gmail.com`
-- Kamo-specific Cal.com URL: **pending client supply/confirmation**
-- Cal.com owner: **not yet documented**
-- Inline embed: not implemented
-- External calendar link: intentionally inactive while `calComUrl` is empty
+- Optional Kamo-owned scheduling URL: **pending client supply/confirmation**
+- Scheduling account owner: **not yet documented**
+- Form or inline embed: not implemented
+- External scheduling link: not published
 - Fallback: active as `mailto:kgnon6@gmail.com` on the booking page; shared booking actions route to that page
 
 No DB Reply, project-review, personal, studio-administration, or fabricated calendar URL is present.
