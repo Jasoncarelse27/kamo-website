@@ -71,7 +71,7 @@
     var container = document.getElementById('dashboard-hero');
     if (!container) return;
     var image = artistConfig.images.portraitJpeg;
-    container.innerHTML = (image ? '<img src="' + image + '" alt="Kamo. G official artist portrait" class="dashboard-hero__avatar">' : '') +
+    container.innerHTML = (image ? '<picture class="dashboard-hero__portrait"><source srcset="' + artistConfig.images.portraitWebp + '" type="image/webp"><img src="' + image + '" alt="Kamo. G official artist portrait" class="dashboard-hero__avatar"></picture>' : '') +
       '<div class="dashboard-hero__info">' +
         '<div class="dashboard-hero__tagline-ecosystem">Official artist website</div>' +
         '<h1 class="dashboard-hero__name">' + artistConfig.name + '</h1>' +

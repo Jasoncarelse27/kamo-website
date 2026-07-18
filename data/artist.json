@@ -21,10 +21,10 @@
     "instagramPost": "https://www.instagram.com/p/DSvTFaXjGuW/"
   },
   "images": {
-    "portraitWebp": "",
-    "portraitJpeg": "",
-    "secondaryWebp": "",
-    "secondaryJpeg": ""
+    "portraitWebp": "/assets/images/press/kamo-g-official-artist-portrait.webp",
+    "portraitJpeg": "/assets/images/press/kamo-g-official-artist-portrait.jpg",
+    "secondaryWebp": "/assets/images/press/kamo-g-press-portrait.webp",
+    "secondaryJpeg": "/assets/images/press/kamo-g-press-portrait.jpg"
   },
   "featuredReleaseId": "oxygen-tank",
   "timeline": [

@@ -58,6 +58,8 @@
   box-shadow: 0 0 0 4px rgba(201, 151, 42, 0.12);
 }
 
+.dashboard-hero__portrait { flex-shrink: 0; }
+
 /* Info block — name, tagline, actions */
 .dashboard-hero__info {
   flex: 1;
