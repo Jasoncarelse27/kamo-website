@@ -16,13 +16,6 @@
     KamoUtils.initMobileNav();
     KamoUtils.setActiveNavLink();
 
-    var observer = new MutationObserver(function() {
-      hydrateSiteConfig(document);
-      KamoUtils.initMobileNav();
-      KamoUtils.setActiveNavLink();
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
-
     var page = KamoUtils.getCurrentPage();
     if (page === 'home') await loadHome();
     if (page === 'music') await loadMusic();
@@ -181,12 +174,11 @@
     if (!container) return;
     var email = artistConfig.bookingEmail;
     if (artistConfig.calComUrl) {
-      container.innerHTML = '<h2>Choose a booking time</h2><p>If the scheduler does not load, use the direct booking link or email.</p>' +
-        '<div id="cal-embed" class="cal-embed" data-cal-url="' + artistConfig.calComUrl + '"></div>' +
+      container.innerHTML = '<h2>Public booking calendar</h2><p>Use the approved public scheduling link, or email the booking team.</p>' +
         '<div class="booking-actions"><a class="btn btn--gold" href="' + artistConfig.calComUrl + '" target="_blank" rel="noopener noreferrer">Open booking calendar</a>' + emailButton(email) + '</div>';
     } else {
       container.innerHTML = '<div class="booking-fallback">' + KamoUtils.iconSVG('calendar', 42) +
-        '<h2>Booking enquiries</h2><p>Public scheduling is not yet connected. Email the booking team with your event date, location and enquiry details.</p>' +
+        '<h2>Booking enquiries</h2><p>Email the booking team with your event date, location and enquiry details. A public scheduling calendar will be added after its client-owned URL is confirmed.</p>' +
         (email ? emailButton(email) : '<p class="status-note">A public booking contact is awaiting confirmation.</p>') + '</div>';
     }
   }
