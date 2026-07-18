@@ -16,9 +16,9 @@
   "calComUrl": "",
   "siteUrl": "",
   "socials": {
-    "spotify": "",
-    "youtube": "",
-    "instagramPost": ""
+    "spotify": "https://open.spotify.com/artist/2oitpnPzsI6zqRMRqYNNgK",
+    "youtube": "https://www.youtube.com/@kamogelononyane",
+    "instagramPost": "https://www.instagram.com/p/DSvTFaXjGuW/"
   },
   "images": {
     "portraitWebp": "",
@@ -26,7 +26,7 @@
     "secondaryWebp": "",
     "secondaryJpeg": ""
   },
-  "featuredReleaseId": "",
+  "featuredReleaseId": "oxygen-tank",
   "timeline": [
     { "label": "Pretoria", "text": "Born in Pretoria, South Africa." },
     { "label": "Kempton Park", "text": "Raised in Kempton Park in a musical family." },
