@@ -1,7 +1,50 @@
 {
   "title": "Kamo. G Radio Pack",
-  "description": "Approved public assets for radio, DJs and media.",
-  "lastUpdated": "",
-  "groups": [],
-  "completePack": null
+  "description": "Approved public assets for radio, DJs and media. The current pack contains press photography only; audio is withheld until titles, ownership and clean status are confirmed.",
+  "lastUpdated": "18 July 2026",
+  "groups": [
+    {
+      "title": "Audio for Radio and DJs",
+      "emptyMessage": "No clean or broadcast-ready audio is currently published. Two supplied M4A recordings remain withheld because their titles, ownership and clean status are unconfirmed.",
+      "items": []
+    },
+    {
+      "title": "Press Photography",
+      "emptyMessage": "No approved photography is available.",
+      "items": [
+        {
+          "title": "Kamo. G — Official Artist Portrait (Original)",
+          "format": "JPEG",
+          "sizeBytes": 161725,
+          "dimensions": "1080 × 1350 px",
+          "status": "Approved original",
+          "path": "/assets/downloads/kamo-g-radio-pack/photos/kamo-g-official-artist-portrait-original.jpg",
+          "sha256": "9862399ac26fba800107a92c48d9806f4e4966b84b5777eb03e1c7d95cfa2006"
+        },
+        {
+          "title": "Kamo. G — Press Portrait (Original)",
+          "format": "JPEG",
+          "sizeBytes": 111718,
+          "dimensions": "1080 × 1350 px",
+          "status": "Approved original",
+          "path": "/assets/downloads/kamo-g-radio-pack/photos/kamo-g-press-portrait-original.jpg",
+          "sha256": "2afe7e129baf99fb4e0b3543dcd97b04aa7100aa7d97ce3a74616986019f31a7"
+        }
+      ]
+    },
+    {
+      "title": "Biography and Documents",
+      "emptyMessage": "No client-approved public documents have been supplied.",
+      "items": []
+    }
+  ],
+  "completePack": {
+    "title": "Kamo. G Radio Pack — Approved Photography",
+    "format": "ZIP",
+    "sizeBytes": 264750,
+    "status": "Integrity verified",
+    "description": "Contains the two approved original press portraits. No audio or private metadata is included.",
+    "path": "/assets/downloads/kamo-g-radio-pack/kamo-g-radio-pack-2026-07-18.zip",
+    "sha256": "4739b5b83ebcbdcd010d245be315e7b47d81471557c92166d1a555d52a3fd618"
+  }
 }
