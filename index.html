@@ -3,144 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Kamo G — Pretoria-born artist and The Son of Moses. Official website. Stream music, book for events, view media, and download the press kit.">
+  <meta name="description" content="Listen to OXYGEN TANK and explore official music, media, bookings and radio resources from South African artist Kamo. G.">
   <meta name="theme-color" content="#111111">
-
-  <title>Kamo G — Artist Dashboard</title>
-
-  <!-- Google Fonts -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Kamo. G | Official Artist Website">
+  <meta property="og:description" content="OXYGEN TANK is available now. Explore official music, media, bookings and radio resources from Kamo. G.">
+  <meta property="og:image" content="https://kamog.online/assets/images/press/kamo-g-official-artist-portrait.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kamo. G | Official Artist Website">
+  <meta name="twitter:description" content="OXYGEN TANK is available now. Explore official music, media, bookings and radio resources from Kamo. G.">
+  <meta name="twitter:image" content="https://kamog.online/assets/images/press/kamo-g-official-artist-portrait.jpg">
+  <link rel="canonical" href="https://kamog.online/">
+  <meta property="og:url" content="https://kamog.online/">
+  <meta property="og:site_name" content="Kamo. G">
+  <meta property="og:locale" content="en_ZA">
+  <meta property="og:image:alt" content="Kamo. G official artist portrait">
+  <meta name="twitter:image:alt" content="Kamo. G official artist portrait">
+  <title>Kamo. G | Official Artist Website</title>
+  <link rel="icon" href="/assets/images/press/kamo-g-favicon.png" type="image/png" sizes="96x96">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;900&display=swap" rel="stylesheet">
-
-  <!-- Stylesheets -->
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/dashboard.css">
   <link rel="stylesheet" href="css/pages.css">
   <link rel="stylesheet" href="css/responsive.css">
-
-  <!-- Chart.js for sparkline charts -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
-
-  <!-- Scripts -->
   <script src="js/utils.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
-
-  <!-- Navbar -->
-  <div id="navbar">Loading navigation...</div>
-
-  <!-- App Layout -->
+  <div id="navbar"><nav class="navbar" aria-label="Main navigation"><div class="navbar__inner"><a href="/" class="navbar__brand">Kamo. G</a><div class="navbar__links" id="site-navigation"><a href="/" class="navbar__link">Home</a><a href="/music" class="navbar__link">Music</a><a href="/bookings" class="navbar__link">Bookings</a><a href="/media" class="navbar__link">Media</a><a href="/radio" class="navbar__link">Radio Pack</a><a href="/about" class="navbar__link">About</a></div><div class="navbar__actions"><a href="/bookings" class="btn btn--gold btn--sm">Book Kamo G</a></div><button type="button" class="navbar__toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="site-navigation"><svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div></nav></div>
   <div class="app-layout">
-    <!-- Sidebar -->
-    <div id="sidebar">Loading sidebar...</div>
-
-    <!-- Main Content -->
     <main id="main-content" class="app-main">
       <div class="app-content">
-
-        <!-- Identity marker — Pretoria roots above hero -->
-        <div class="dashboard-hero__ecosystem-label">PRETORIA • SOUTH AFRICA</div>
-
-        <!-- Dashboard Hero — JS renders avatar, name, tagline, actions, stats inside here -->
-        <div id="dashboard-hero" class="dashboard-hero">
-          <div class="dashboard-hero__avatar" style="background: var(--dark-mid);"></div>
-          <div class="dashboard-hero__info">
-            <p style="color: var(--muted); font-size: 14px;">Loading dashboard...</p>
-          </div>
-        </div>
-
-        <!-- Static Featured Release — presentational only. Placed outside JS-controlled hero. -->
-        <div class="dashboard-hero__featured">
-          <span class="dashboard-hero__featured-label">Featured Release</span>
-          <span class="dashboard-hero__featured-title">Son of Moses</span>
-          <a href="/music" class="dashboard-hero__featured-link">Listen Now →</a>
-        </div>
-
-        <!-- Why Son of Moses? — Story Card -->
-        <div class="dashboard-section">
-          <div style="background: var(--dark); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: var(--radius-md); padding: var(--space-lg);">
-            <div style="font-family: var(--font-heading); font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: var(--space-sm);">The Story</div>
-            <h2 style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: var(--space-sm);">Why "Son of Moses"?</h2>
-            <p style="font-size: 14px; color: var(--muted-light); line-height: 1.7; margin-bottom: var(--space-md);">
-              The name "Son of Moses" is rooted in family. It's a tribute to his father, Moses — the man whose name carries the weight of legacy, faith, and identity. Born in Pretoria and raised in Kempton Park, Kamo G grew up in a home where music was everywhere. Gospel. Hip-hop. Afrobeat. Kwaito. It all blended together, and by age 9, he was already chasing the sound.
-            </p>
-            <p style="font-size: 14px; color: var(--muted-light); line-height: 1.7; margin-bottom: var(--space-md);">
-              At 16, he made the choice that would define his life: music wasn't a hobby — it was the path. Every track he creates is a page from his story. "Son of Moses" is more than a song title. It's a declaration of where he comes from, who raised him, and what he's here to say.
-            </p>
-            <a href="/about" class="btn btn--gold">Hear The Story</a>
-          </div>
-        </div>
-
-        <!-- Recent Releases — MOVED UP: directly below hero for artist-first hierarchy -->
-        <div class="dashboard-section">
-          <div class="dashboard-section__header">
-            <h2 class="dashboard-section__title">Recent Releases</h2>
-            <a href="/music" class="dashboard-section__link">View All</a>
-          </div>
-          <div id="recent-releases" class="music-grid dashboard-releases">
-            <p style="color: var(--muted); font-size: 13px;">Loading releases...</p>
-          </div>
-        </div>
-
-        <!-- Metrics Row — MOVED DOWN: below artist content -->
-        <div id="metrics-row" class="metrics-row">
-          <div class="dashboard-card">
-            <p style="color: var(--muted);">Loading metrics...</p>
-          </div>
-        </div>
-
-        <!-- Quick Actions -->
-        <div class="dashboard-section">
-          <div class="dashboard-section__header">
-            <h2 class="dashboard-section__title">Quick Actions</h2>
-          </div>
-          <div id="quick-actions" class="quick-actions">
-            <div class="quick-action">
-              <p style="color: var(--muted); font-size: 13px;">Loading...</p>
+        <section class="campaign-hero" aria-labelledby="campaign-title">
+          <picture class="campaign-hero__media">
+            <source srcset="/assets/images/press/kamo-g-official-artist-portrait.webp" type="image/webp">
+            <img src="/assets/images/press/kamo-g-official-artist-portrait.jpg" width="1080" height="1350" alt="Portrait of Kamo. G wearing a black bucket hat and jacket" fetchpriority="high" decoding="async">
+          </picture>
+          <div class="campaign-hero__content">
+            <p class="campaign-hero__eyebrow">New release</p>
+            <h1 id="campaign-title">OXYGEN TANK</h1>
+            <p class="campaign-hero__copy">The 2023 album is available now on Kamo. G’s official Spotify release page.</p>
+            <div class="campaign-hero__actions">
+              <a href="https://open.spotify.com/album/4x34u2u5h0eARAbcn93FRd" class="btn btn--gold btn--lg" target="_blank" rel="noopener noreferrer">Listen on Spotify</a>
+              <a href="/bookings" class="btn btn--outline btn--lg">Book Kamo G</a>
             </div>
+            <a href="/radio" class="campaign-hero__tertiary">Download Radio Pack <span aria-hidden="true">→</span></a>
           </div>
-        </div>
+        </section>
 
-        <!-- Activity Feed — standalone section (no longer in grid with releases) -->
-        <div id="activity-feed" class="activity-feed">
-          <div class="activity-feed__header">
-            <h3 class="activity-feed__title">Recent Activity</h3>
+        <section class="latest" aria-labelledby="latest-title">
+          <div class="section-heading">
+            <p class="section-heading__eyebrow">Now</p>
+            <h2 id="latest-title">Latest</h2>
           </div>
-          <p style="color: var(--muted); font-size: 13px;">Loading activity...</p>
-        </div>
-
+          <div class="latest-grid">
+            <article class="latest-card latest-card--release">
+              <picture class="latest-card__media">
+                <source srcset="/assets/images/press/kamo-g-press-portrait.webp" type="image/webp">
+                <img src="/assets/images/press/kamo-g-press-portrait.jpg" width="1080" height="1350" loading="lazy" decoding="async" alt="Kamo. G in a black bucket hat and jacket against a green background">
+              </picture>
+              <div class="latest-card__content"><p class="latest-card__type">Release</p><h3>OXYGEN TANK</h3><p>Listen to the verified 2023 album.</p><a href="https://open.spotify.com/album/4x34u2u5h0eARAbcn93FRd" target="_blank" rel="noopener noreferrer">Listen on Spotify <span aria-hidden="true">→</span></a></div>
+            </article>
+            <article class="latest-card">
+              <p class="latest-card__type">Official YouTube</p>
+              <h3>Watch Kamo G</h3>
+              <p>Visit Kamo. G’s verified YouTube channel.</p>
+              <a href="https://www.youtube.com/@kamogelononyane" target="_blank" rel="noopener noreferrer">Visit YouTube <span aria-hidden="true">→</span></a>
+            </article>
+            <article class="latest-card latest-card--accent">
+              <p class="latest-card__type">Media resources</p>
+              <h3>Radio Pack</h3>
+              <p>Clean and explicit radio voice notes plus approved press photography.</p>
+              <a href="/radio">Open Radio Pack <span aria-hidden="true">→</span></a>
+            </article>
+          </div>
+        </section>
       </div>
     </main>
   </div>
-
-  <!-- Footer -->
-  <div id="footer">Loading footer...</div>
-
-  <!-- Component Loader -->
+  <div id="footer"></div>
   <script>
-    // Load shared components
     async function loadComponent(id, url) {
       try {
         const response = await fetch(url);
-        if (response.ok) {
-          document.getElementById(id).innerHTML = await response.text();
-          // Re-initialize navigation after navbar is injected into DOM
-          if (id === 'navbar' && window.DBStudio && window.DBStudio.utils) {
-            window.DBStudio.utils.initMobileNav();
-            window.DBStudio.utils.setActiveNavLink();
-          }
-        }
-      } catch (e) {
-        console.warn('Could not load component:', url);
-      }
+        if (!response.ok) throw new Error('Component unavailable');
+        document.getElementById(id).innerHTML = await response.text();
+        if (window.KamoSite) window.KamoSite.hydrateSiteConfig(document.getElementById(id));
+        if (window.KamoUtils) { window.KamoUtils.initMobileNav(); window.KamoUtils.setActiveNavLink(); }
+      } catch (error) { console.warn(error.message, url); }
     }
-
-    loadComponent('navbar', 'components/navbar.html');
-    loadComponent('sidebar', 'components/sidebar.html');
-    loadComponent('footer', 'components/footer.html');
+    loadComponent('navbar', '/components/navbar.html');
+    loadComponent('footer', '/components/footer.html');
   </script>
 </body>
 </html>

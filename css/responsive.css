@@ -1,6 +1,6 @@
 /* ============================================================
-   DB STUDIO ARTIST ECOSYSTEM PLATFORM — RESPONSIVE STYLES
-   Kamo G · Version 1
+   KAMO. G ARTIST WEBSITE — RESPONSIVE STYLES
+   Campaign refinement
    ============================================================
    Breakpoints:
    - Desktop: 1280px+
@@ -329,4 +329,48 @@
   a {
     color: black;
   }
+}
+
+/* Campaign refinement breakpoints */
+@media (max-width: 992px) {
+  .app-content { padding: 24px; }
+  .latest-grid { grid-template-columns: 1fr 1fr; }
+  .latest-card--release { grid-row: span 2; }
+  .about-content { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .navbar { padding: 0 12px; }
+  .navbar__actions .btn { padding: 10px 12px; letter-spacing: 0.4px; }
+  .campaign-hero { min-height: 680px; }
+  .campaign-hero__media img { object-position: 56% 22%; }
+  .campaign-hero::after { background: linear-gradient(0deg, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.8) 48%, rgba(0, 0, 0, 0.12) 80%); }
+  .campaign-hero__content { max-width: none; min-height: inherit; padding: 32px; justify-content: flex-end; }
+  .campaign-hero h1 { font-size: clamp(48px, 14vw, 78px); letter-spacing: -3px; }
+  .latest-grid { grid-template-columns: 1fr; }
+  .latest-card, .latest-card--release { min-height: 320px; }
+  .about-destinations { align-items: flex-start; flex-direction: column; }
+  .download-card__audio { width: 100%; }
+}
+
+@media (max-width: 576px) {
+  .app-content { padding: 12px; }
+  .navbar__brand { font-size: 14px; }
+  .navbar__actions .btn { font-size: 9px; padding: 9px 10px; }
+  .campaign-hero { min-height: 650px; border-radius: var(--radius-md); }
+  .campaign-hero__content { padding: 24px 20px; }
+  .campaign-hero__actions { width: 100%; }
+  .campaign-hero__actions .btn { width: 100%; }
+  .latest { padding-top: 56px; }
+  .page-hero { padding: 44px 4px; }
+  .page-hero__title { font-size: 38px; }
+  .ep-spotlight, .radio-main, .about-release { padding: 20px; }
+  .spotify-embed { height: 352px; }
+  .media-gallery__item { aspect-ratio: 4 / 5; }
+  .about-hero { height: 440px; }
+  .about-hero__overlay { padding: 24px; }
+  .about-hero__title { font-size: 38px; }
+  .about-destinations__links { gap: 18px; }
+  .footer__nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .footer__socials { flex-wrap: wrap; }
 }

@@ -1,19 +1,71 @@
 {
-  "isActive": true,
-  "title": "Kamo G — Radio Pack 2026",
-  "description": "Official press kit, biography, high-resolution photos, audio downloads, and media assets for radio stations, journalists, and booking inquiries.",
-  "epkDownloadUrl": "https://drive.google.com/drive/folders/kamo-g-epk",
-  "bioPdfUrl": "https://drive.google.com/file/d/kamo-g-bio",
-  "audioDownloadUrl": "https://drive.google.com/drive/folders/kamo-g-audio",
-  "contents": [
-    "Artist Biography (PDF)",
-    "High Resolution Photos (ZIP — 12 images)",
-    "Radio Edit Tracks (WAV — 4 tracks)",
-    "Clean Edit Tracks (WAV — 4 tracks)",
-    "Interview Questions (PDF)",
-    "Live Performance Rider (PDF)",
-    "Technical Spec Sheet (PDF)",
-    "Press Release — Latest Single (PDF)"
+  "title": "Kamo. G Radio Pack",
+  "description": "Approved public assets for radio, DJs and media. The current pack contains clean and explicit radio voice notes plus press photography.",
+  "lastUpdated": "18 July 2026",
+  "groups": [
+    {
+      "title": "Audio for Radio and DJs",
+      "emptyMessage": "No approved audio is currently published.",
+      "items": [
+        {
+          "title": "Kamo. G Radio Voice Note — Clean",
+          "format": "M4A",
+          "sizeBytes": 427030,
+          "durationSeconds": 45.632,
+          "status": "Approved clean version",
+          "description": "Original approved M4A preserved without conversion.",
+          "path": "/assets/downloads/kamo-g-radio-pack/audio/kamo-g-radio-voice-note-clean.m4a",
+          "sha256": "0876a66d50e0d96f0b54e0c0e9d6aa5214941bfb425c0d73b033082a3aade24f"
+        },
+        {
+          "title": "Kamo. G Radio Voice Note — Explicit",
+          "format": "M4A",
+          "sizeBytes": 607003,
+          "durationSeconds": 64.832,
+          "status": "Approved explicit version",
+          "description": "Original approved M4A preserved without conversion.",
+          "path": "/assets/downloads/kamo-g-radio-pack/audio/kamo-g-radio-voice-note-explicit.m4a",
+          "sha256": "1e121068fb93275ca29196415e35430b4462ba54d5eea4f7d1ed922f2e3ef329"
+        }
+      ]
+    },
+    {
+      "title": "Press Photography",
+      "emptyMessage": "No approved photography is available.",
+      "items": [
+        {
+          "title": "Kamo. G — Official Artist Portrait (Original)",
+          "format": "JPEG",
+          "sizeBytes": 161725,
+          "dimensions": "1080 × 1350 px",
+          "status": "Approved original",
+          "path": "/assets/downloads/kamo-g-radio-pack/photos/kamo-g-official-artist-portrait-original.jpg",
+          "sha256": "9862399ac26fba800107a92c48d9806f4e4966b84b5777eb03e1c7d95cfa2006"
+        },
+        {
+          "title": "Kamo. G — Press Portrait (Original)",
+          "format": "JPEG",
+          "sizeBytes": 111718,
+          "dimensions": "1080 × 1350 px",
+          "status": "Approved original",
+          "path": "/assets/downloads/kamo-g-radio-pack/photos/kamo-g-press-portrait-original.jpg",
+          "sha256": "2afe7e129baf99fb4e0b3543dcd97b04aa7100aa7d97ce3a74616986019f31a7"
+        }
+      ]
+    },
+    {
+      "title": "Biography and Documents",
+      "emptyMessage": "No client-approved public documents have been supplied.",
+      "items": []
+    }
   ],
-  "lastUpdated": "2026-03-01"
+  "completePack": {
+    "title": "Kamo. G Radio Pack — Audio and Photography",
+    "format": "ZIP",
+    "sizeBytes": 1262796,
+    "status": "Integrity verified",
+    "description": "Contains both approved original radio voice notes and both approved original press portraits. No private correspondence or transfer sidecar files are included.",
+    "path": "/assets/downloads/kamo-g-radio-pack/kamo-g-radio-pack-2026-07-18.zip",
+    "sha256": "2402d49b55255f55325c19cefc63c3c611d0d66b5f0e8fd855a59d13ecaa8f21"
+  }
 }

@@ -1,106 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Kamo G — Visual chronicles of the Son of Moses journey. Photos, music videos, and behind-the-scenes content from the Pretoria-born artist.">
-  <meta name="theme-color" content="#111111">
-
-  <title>Kamo G — Media</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;900&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="../css/dashboard.css">
-  <link rel="stylesheet" href="../css/pages.css">
-  <link rel="stylesheet" href="../css/responsive.css">
-
-  <script src="../js/utils.js" defer></script>
-  <script src="../js/main.js" defer></script>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Approved Kamo. G photography and verified official media destinations."><meta name="theme-color" content="#111111">
+  <meta property="og:type" content="website"><meta property="og:title" content="Media | Kamo. G"><meta property="og:description" content="Official photographs and selected media from Kamo. G."><meta property="og:image" content="https://kamog.online/assets/images/press/kamo-g-official-artist-portrait.jpg">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Media | Kamo. G"><meta name="twitter:description" content="Official photographs and selected media from Kamo. G."><meta name="twitter:image" content="https://kamog.online/assets/images/press/kamo-g-official-artist-portrait.jpg">
+  <link rel="canonical" href="https://kamog.online/media">
+  <meta property="og:url" content="https://kamog.online/media">
+  <meta property="og:site_name" content="Kamo. G">
+  <meta property="og:locale" content="en_ZA">
+  <meta property="og:image:alt" content="Kamo. G official artist portrait">
+  <meta name="twitter:image:alt" content="Kamo. G official artist portrait">
+  <title>Media | Kamo. G</title><link rel="icon" href="/assets/images/press/kamo-g-favicon.png" type="image/png" sizes="96x96">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/css/dashboard.css"><link rel="stylesheet" href="/css/pages.css"><link rel="stylesheet" href="/css/responsive.css"><script src="/js/utils.js" defer></script><script src="/js/main.js" defer></script>
 </head>
-<body>
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-
-  <div id="navbar">Loading navigation...</div>
-
-  <div class="app-layout">
-    <div id="sidebar">Loading sidebar...</div>
-
-    <main id="main-content" class="app-main">
-      <div class="app-content">
-
-        <!-- Page Hero -->
-        <div class="page-hero">
-          <div class="page-hero__tag">Gallery</div>
-          <h1 class="page-hero__title">Media</h1>
-          <p class="page-hero__subtitle">Visual chronicles of the journey. Studio sessions, live performances, and moments from the Son of Moses universe.</p>
-        </div>
-
-        <!-- Photo Gallery -->
-        <div class="dashboard-section">
-          <div class="dashboard-section__header">
-            <h2 class="dashboard-section__title">Photos</h2>
-          </div>
-          <div id="media-gallery" class="media-gallery">
-            <p style="color: var(--muted);">Loading gallery...</p>
-          </div>
-        </div>
-
-        <!-- Videos -->
-        <div class="dashboard-section">
-          <div class="dashboard-section__header">
-            <h2 class="dashboard-section__title">Videos</h2>
-          </div>
-          <div class="video-grid">
-            <div class="video-card">
-              <div class="video-card__embed">
-                <div class="video-card__embed-placeholder">
-                  <p><svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><polygon points="5 3 19 12 5 21 5 3"/></svg> Son of Moses (Music Video)</p>
-                </div>
-              </div>
-              <div class="video-card__info">
-                <h3 class="video-card__title">Son of Moses — Official Music Video</h3>
-              </div>
-            </div>
-
-            <div class="video-card">
-              <div class="video-card__embed">
-                <div class="video-card__embed-placeholder">
-                  <p><svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><polygon points="5 3 19 12 5 21 5 3"/></svg> Midnight in Joburg (Lyric Video)</p>
-                </div>
-              </div>
-              <div class="video-card__info">
-                <h3 class="video-card__title">Midnight in Joburg — Lyric Video</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </main>
-  </div>
-
-  <div id="footer">Loading footer...</div>
-
-  <script>
-    async function loadComponent(id, url) {
-      try {
-        const response = await fetch(url);
-        if (response.ok) {
-          document.getElementById(id).innerHTML = await response.text();
-          // Re-initialize navigation after navbar is injected into DOM
-          if (id === 'navbar' && window.DBStudio && window.DBStudio.utils) {
-            window.DBStudio.utils.initMobileNav();
-            window.DBStudio.utils.setActiveNavLink();
-          }
-        }
-      } catch (e) { console.warn('Could not load component:', url); }
-    }
-    loadComponent('navbar', '../components/navbar.html');
-    loadComponent('sidebar', '../components/sidebar.html');
-    loadComponent('footer', '../components/footer.html');
-  </script>
-</body>
-</html>
+<body><a href="#main-content" class="skip-link">Skip to main content</a><div id="navbar"><nav class="navbar" aria-label="Main navigation"><div class="navbar__inner"><a href="/" class="navbar__brand">Kamo. G</a><div class="navbar__links" id="site-navigation"><a href="/" class="navbar__link">Home</a><a href="/music" class="navbar__link">Music</a><a href="/bookings" class="navbar__link">Bookings</a><a href="/media" class="navbar__link">Media</a><a href="/radio" class="navbar__link">Radio Pack</a><a href="/about" class="navbar__link">About</a></div><div class="navbar__actions"><a href="/bookings" class="btn btn--gold btn--sm">Book Kamo G</a></div><button type="button" class="navbar__toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="site-navigation"><svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div></nav></div><div class="app-layout"><main id="main-content" class="app-main"><div class="app-content">
+  <header class="page-hero"><div class="page-hero__tag">Approved media</div><h1 class="page-hero__title">Media</h1><p class="page-hero__subtitle">Approved Kamo. G photography and verified official destinations.</p></header>
+  <section class="dashboard-section" aria-labelledby="photos-title"><div class="dashboard-section__header"><h2 id="photos-title" class="dashboard-section__title">Official photographs</h2></div><div id="media-gallery" class="media-gallery"><article class="media-gallery__entry"><button class="media-gallery__item" type="button" data-lightbox-index="0" aria-label="Open Kamo. G — Official Artist Portrait"><picture><source srcset="/assets/images/press/kamo-g-official-artist-portrait.webp" type="image/webp"><img src="/assets/images/press/kamo-g-official-artist-portrait.jpg" width="1080" height="1350" alt="Portrait of Kamo. G wearing a black bucket hat and jacket" loading="lazy" decoding="async"></picture><span class="media-gallery__item-overlay"><span class="media-gallery__item-caption">Kamo. G — Official Artist Portrait</span></span></button><a class="media-gallery__download" href="/assets/downloads/kamo-g-radio-pack/photos/kamo-g-official-artist-portrait-original.jpg" download>Download original</a></article><article class="media-gallery__entry"><button class="media-gallery__item" type="button" data-lightbox-index="1" aria-label="Open Kamo. G — Press Portrait"><picture><source srcset="/assets/images/press/kamo-g-press-portrait.webp" type="image/webp"><img src="/assets/images/press/kamo-g-press-portrait.jpg" width="1080" height="1350" alt="Kamo. G in a black bucket hat and jacket against a green background" loading="lazy" decoding="async"></picture><span class="media-gallery__item-overlay"><span class="media-gallery__item-caption">Kamo. G — Press Portrait</span></span></button><a class="media-gallery__download" href="/assets/downloads/kamo-g-radio-pack/photos/kamo-g-press-portrait-original.jpg" download>Download original</a></article></div></section>
+  <section class="platform-grid" aria-label="Official media destinations"><a href="https://www.youtube.com/@kamogelononyane" class="platform-card" data-social="youtube" target="_blank" rel="noopener noreferrer"><span class="platform-card__icon">▶</span><h2>Official YouTube channel</h2><p>Watch videos published on Kamo. G’s official channel.</p><span class="platform-card__action">Open YouTube ↗</span></a><a href="https://www.instagram.com/p/DSvTFaXjGuW/" class="platform-card" data-social="instagramPost" target="_blank" rel="noopener noreferrer"><span class="platform-card__icon">◎</span><h2>Selected Instagram moment</h2><p>View the supplied official Instagram post.</p><span class="platform-card__action">Open Instagram ↗</span></a></section>
+  </div></main></div><div id="footer"></div>
+  <dialog id="media-lightbox" class="lightbox" aria-labelledby="lightbox-caption"><button type="button" class="lightbox__close" data-lightbox-close aria-label="Close image">×</button><img src="/assets/images/press/kamo-g-official-artist-portrait.jpg" width="1080" height="1350" alt="Kamo. G official artist portrait"><p id="lightbox-caption" data-lightbox-caption></p></dialog>
+  <script>async function loadComponent(id,url){try{const r=await fetch(url);if(!r.ok)throw new Error('Component unavailable');document.getElementById(id).innerHTML=await r.text();if(window.KamoSite)window.KamoSite.hydrateSiteConfig(document.getElementById(id));if(window.KamoUtils){window.KamoUtils.initMobileNav();window.KamoUtils.setActiveNavLink();}}catch(e){console.warn(e.message,url);}}loadComponent('navbar','/components/navbar.html');loadComponent('footer','/components/footer.html');</script>
+</body></html>
