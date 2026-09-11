@@ -123,11 +123,12 @@
     var container = document.getElementById('booking-main');
     if (!container) return;
 
-    /* Booking calendar activation point.
-       Set "calComUrl" in data/artist.json to Kamo's public Cal.com booking link
-       (for example https://cal.com/<handle>/<event>) and the calendar CTA below
-       goes live with no code change. While it is empty the site keeps the
-       honest email-only fallback and makes no availability claim. */
+    /* Booking calendar. The canonical destination is "calComUrl" in
+       data/artist.json (currently https://cal.com/kamo-g/booking). Change it
+       there, and in the static fallback in pages/bookings.html, to repoint
+       bookings. If it is ever blanked, the site falls back to email only and
+       makes no availability claim. Cal.com owns availability, duration and
+       location -- do not restate them here or they will go stale. */
     var calUrl = (artistConfig.calComUrl || '').trim();
 
     if (calUrl) {

@@ -1,6 +1,6 @@
 # Kamo. G Website Handover
 
-Last updated: 11 September 2026
+Last updated: 11 September 2026 (booking calendar activated)
 
 ## Project identity and safety
 
@@ -86,12 +86,32 @@ The public original JPEG downloads retain EXIF/IPTC/XMP/Photoshop profiles and e
 
 ## Booking status
 
-- Confirmed public email fallback: `kgnon6@gmail.com`
-- Optional Kamo-owned scheduling URL: **pending client supply/confirmation**
-- Scheduling account owner: **not yet documented**
-- Form or inline embed: not implemented
-- External scheduling link: not published
-- **Activation point:** `calComUrl` in `data/artist.json` (currently `""`). Setting it to Kamo's public Cal.com link switches `/bookings` from the email fallback to a calendar CTA. `loadBookings()` in `js/main.js` reads it; no code change is needed at launch.
+- Canonical booking URL: `https://cal.com/kamo-g/booking` — **live**
+- Confirmed public email fallback: `kgnon6@gmail.com` (retained as the alternative, not replaced)
+- Scheduling account owner: Kamo G (Cal.com profile `kamo-g`)
+- Event: "Book Kamo G", 30 minutes, meeting location Cal Video
+- Availability as configured in Cal.com: Mon-Fri 09:00-17:00, Sat 09:00-15:00, Sun unavailable, timezone Africa/Johannesburg
+- Form or inline embed: not implemented — the site links out to the Cal.com page rather than embedding it
+- External scheduling link: published on `/bookings`, opening in a new tab so the site is never lost behind the booking flow
+
+**Google Calendar conflict protection is NOT connected.** Kamo must complete Google
+authorization in Cal.com himself. Until he does, Cal.com offers every slot inside the
+configured hours and does not know about commitments in his personal calendar, so
+double-bookings remain possible. This is a Cal.com account setting; no website change
+is involved.
+
+Availability hours, duration and location are deliberately **not** duplicated into the
+website. Cal.com is the single source of truth for them, so Kamo can change his hours
+without a site update going stale.
+
+### Where the booking URL lives
+
+Two places, both of which must change together if the URL is ever replaced:
+
+| File | Role |
+|---|---|
+| `data/artist.json` -> `calComUrl` | Drives the live CTA that `loadBookings()` renders in `js/main.js` |
+| `pages/bookings.html` static fallback | Shown only if JavaScript is off or `data/artist.json` fails to load |
 - Fallback: active as `mailto:kgnon6@gmail.com` on the booking page; shared booking actions route to that page
 
 No DB Reply, project-review, personal, studio-administration, or fabricated calendar URL is present.
@@ -109,7 +129,7 @@ No DB Reply, project-review, personal, studio-administration, or fabricated cale
 
 Only these concrete inputs remain:
 
-1. Supply and confirm the public Kamo-owned Cal.com event URL, then set it as `calComUrl` in `data/artist.json`.
+1. Connect Google Calendar to Cal.com (Kamo's own Google authorization) so booked slots respect his real availability. The booking URL itself is already live.
 2. Supply approved biography/press documents, cover artwork, clean audio masters, or additional photography only if they should be added to the public pack.
 3. Confirm Netlify ownership, DNS ownership, and the Production launch approver. (Public domain is settled: `kamog.online`.)
 4. Confirm whether analytics is required and, if so, provide the owned property and consent/privacy requirements.
@@ -125,7 +145,8 @@ Only these concrete inputs remain:
 - [x] Validate the exact final feature-branch tree locally
 - [x] Resolve canonical/Open Graph metadata against the approved domain
 - [x] Publish `robots.txt`, `sitemap.xml`, and a branded `404.html`
-- [ ] Record and approve the final Kamo-owned Cal.com URL, then set `calComUrl`
+- [x] Record and approve the final Kamo-owned Cal.com URL, then set `calComUrl`
+- [ ] Kamo connects Google Calendar to Cal.com for conflict protection
 - [ ] Confirm DNS and Netlify account ownership
 - [ ] Obtain written client launch approval
 - [ ] Merge and deploy Production through the verified owner (outside this handover task)
@@ -162,7 +183,7 @@ Most public content is data, not markup:
 
 | To change | Edit |
 |---|---|
-| Name, bio, booking email, social links, **Cal.com URL** | `data/artist.json` |
+| Name, bio, booking email, social links, **Cal.com URL** | `data/artist.json` (also update the fallback in `pages/bookings.html`) |
 | Current release and Spotify embed | `data/releases.json` |
 | Photo gallery and download links | `data/gallery.json` |
 | Radio pack downloads and metadata | `data/radio.json` |
