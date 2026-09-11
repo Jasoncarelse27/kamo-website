@@ -121,7 +121,26 @@
 
   function loadBookings() {
     var container = document.getElementById('booking-main');
-    if (!container || !artistConfig.bookingEmail) return;
+    if (!container) return;
+
+    /* Booking calendar activation point.
+       Set "calComUrl" in data/artist.json to Kamo's public Cal.com booking link
+       (for example https://cal.com/<handle>/<event>) and the calendar CTA below
+       goes live with no code change. While it is empty the site keeps the
+       honest email-only fallback and makes no availability claim. */
+    var calUrl = (artistConfig.calComUrl || '').trim();
+
+    if (calUrl) {
+      container.innerHTML = '<div class="booking-fallback"><h2>Check availability</h2>' +
+        '<p>Choose a time that suits your event. Cal.com sends both you and the booking team a confirmation email.</p>' +
+        '<a class="btn btn--gold" href="' + calUrl + '" target="_blank" rel="noopener noreferrer">' +
+        KamoUtils.iconSVG('calendar', 16) + ' Book Kamo. G</a>' +
+        (artistConfig.bookingEmail ? '<p>Prefer email? Write to ' + emailLink(artistConfig.bookingEmail) + '.</p>' : '') +
+        '</div>';
+      return;
+    }
+
+    if (!artistConfig.bookingEmail) return;
     container.innerHTML = '<div class="booking-fallback"><h2>Booking enquiries</h2>' +
       '<p>Email the booking team directly. No form, public calendar or availability claim is used on this site.</p>' +
       emailButton(artistConfig.bookingEmail) + '</div>';
@@ -170,5 +189,9 @@
 
   function emailButton(email) {
     return '<a class="btn btn--gold" href="mailto:' + email + '">' + KamoUtils.iconSVG('mail', 16) + ' ' + email + '</a>';
+  }
+
+  function emailLink(email) {
+    return '<a href="mailto:' + email + '">' + email + '</a>';
   }
 })();

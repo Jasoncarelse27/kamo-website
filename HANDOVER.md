@@ -1,6 +1,6 @@
 # Kamo. G Website Handover
 
-Last updated: 18 July 2026
+Last updated: 11 September 2026
 
 ## Project identity and safety
 
@@ -35,7 +35,7 @@ The biography uses approved project material and restrained factual language. �
 - `/about` uses only approved biography material, the current release, verified official destinations, and a booking action.
 - Metadata, meaningful page titles, approved social-image references, image alternatives, safe external-link attributes, responsive navigation, mobile-menu Escape handling, and body scroll control are present across the routes.
 
-No analytics or tracking has been added. No permanent canonical domain is configured because the final public domain is not documented. Open Graph and Twitter images remain root-relative until that domain is approved; their absolute public URLs must be finalized before Production launch.
+No analytics or tracking has been added. The approved public domain is `kamog.online`, so every page now carries an absolute `rel=canonical`, `og:url`, and absolute Open Graph/Twitter image URLs on that domain. `robots.txt`, `sitemap.xml`, and a branded `404.html` are published. These values are correct only once `kamog.online` actually serves the site; they are inert until then.
 
 ## Removed prototype content
 
@@ -91,6 +91,7 @@ The public original JPEG downloads retain EXIF/IPTC/XMP/Photoshop profiles and e
 - Scheduling account owner: **not yet documented**
 - Form or inline embed: not implemented
 - External scheduling link: not published
+- **Activation point:** `calComUrl` in `data/artist.json` (currently `""`). Setting it to Kamo's public Cal.com link switches `/bookings` from the email fallback to a calendar CTA. `loadBookings()` in `js/main.js` reads it; no code change is needed at launch.
 - Fallback: active as `mailto:kgnon6@gmail.com` on the booking page; shared booking actions route to that page
 
 No DB Reply, project-review, personal, studio-administration, or fabricated calendar URL is present.
@@ -100,16 +101,17 @@ No DB Reply, project-review, personal, studio-administration, or fabricated cale
 - Production branch is expected to remain `main`.
 - Netlify build command: none; publish directory: repository root.
 - A Deploy Preview may be created only from the delivery branch after validation and repository linkage checks.
-- The final domain, DNS owner, Netlify team/site owner, and Production launch approver still require confirmation before launch.
+- Approved public domain: `kamog.online` (registration processing as of 11 September 2026). DNS is **not** configured and Production is **not** deployed.
+- The DNS owner, Netlify team/site owner, and Production launch approver still require confirmation before launch.
 - `/portal/kamo`, DB Assistant, DB Reply, Cloudflare, DNS, and Production Netlify are outside this repository handover and must remain untouched.
 
 ## Remaining client decisions
 
 Only these concrete inputs remain:
 
-1. Supply and confirm the public Kamo-owned Cal.com event URL, if an external booking-calendar link is wanted.
+1. Supply and confirm the public Kamo-owned Cal.com event URL, then set it as `calComUrl` in `data/artist.json`.
 2. Supply approved biography/press documents, cover artwork, clean audio masters, or additional photography only if they should be added to the public pack.
-3. Confirm the final public domain, Netlify ownership, DNS ownership, and Production launch approver.
+3. Confirm Netlify ownership, DNS ownership, and the Production launch approver. (Public domain is settled: `kamog.online`.)
 4. Confirm whether analytics is required and, if so, provide the owned property and consent/privacy requirements.
 
 ## Launch checklist
@@ -120,10 +122,57 @@ Only these concrete inputs remain:
 - [x] Publish working individual photo downloads and an integrity-tested ZIP
 - [x] Publish the approved clean and explicit radio voice notes without conversion
 - [x] Preserve an honest booking-email fallback
-- [ ] Validate the exact final feature-branch tree locally
-- [ ] Record and approve the final Kamo-owned Cal.com URL, if required
-- [ ] Confirm final domain and account ownership
+- [x] Validate the exact final feature-branch tree locally
+- [x] Resolve canonical/Open Graph metadata against the approved domain
+- [x] Publish `robots.txt`, `sitemap.xml`, and a branded `404.html`
+- [ ] Record and approve the final Kamo-owned Cal.com URL, then set `calComUrl`
+- [ ] Confirm DNS and Netlify account ownership
 - [ ] Obtain written client launch approval
 - [ ] Merge and deploy Production through the verified owner (outside this handover task)
 
 Use normal review and revert workflows; do not rewrite shared history or force-push. This feature branch is a release candidate, not authorization to merge or publish Production.
+
+
+## Operations
+
+Facts needed to run the site after launch. **No credentials belong in this repository.**
+
+### Hosting and deployment
+
+| Item | Value |
+|---|---|
+| Production domain | `kamog.online` (registration processing; DNS not yet pointed) |
+| Host | Netlify, site slug `kamo-g` |
+| Pre-domain URL | `https://kamo-g.netlify.app` |
+| Repository | `https://github.com/Jasoncarelse27/kamo-website` |
+| Production branch | `main` |
+| Delivery branch | `feature/kamo-client-ready-20260718` (PR #1) |
+| Build command | none — static site |
+| Publish directory | repository root (`.`) |
+
+Deployment procedure: merge the delivery branch into `main`; Netlify publishes `main` automatically. Every push to the delivery branch republishes the Deploy Preview at `https://deploy-preview-1--kamo-g.netlify.app`. Roll back from Netlify's Deploys list by publishing a previous deploy — there is no build step to reproduce.
+
+### Routing
+
+`netlify.toml` rewrites the five clean routes (`/music`, `/bookings`, `/media`, `/radio`, `/about`) to their files in `pages/`. Adding a page means adding both the file and its rewrite, plus a `sitemap.xml` entry. The underlying `/pages/*.html` paths stay reachable, which is why every page carries a canonical tag pointing at the clean route.
+
+### Updating content
+
+Most public content is data, not markup:
+
+| To change | Edit |
+|---|---|
+| Name, bio, booking email, social links, **Cal.com URL** | `data/artist.json` |
+| Current release and Spotify embed | `data/releases.json` |
+| Photo gallery and download links | `data/gallery.json` |
+| Radio pack downloads and metadata | `data/radio.json` |
+| Navigation and footer | `components/navbar.html`, `components/footer.html` |
+
+Images live in `assets/images/press/` (serve both `.webp` and `.jpg`, 1080×1350, and keep the `width`/`height` attributes so layout does not shift). Downloadables live in `assets/downloads/kamo-g-radio-pack/`. Audio is served as original M4A with no transcoding. After editing any JSON file, confirm it still parses (`jq empty data/*.json`) — a malformed file silently blanks that section.
+
+### Maintenance considerations
+
+- No dependencies, build, CMS, or database — nothing to patch on a schedule.
+- Third-party surfaces that can break without warning: the Spotify embed, Google Fonts, and the YouTube/Instagram destinations.
+- `data/radio.json` carries SHA-256 checksums for every download; re-check them if assets are replaced.
+- The site sets no cookies and loads no analytics, so no consent banner is required. Adding analytics would change that.
